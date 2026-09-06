@@ -1,6 +1,4 @@
-export type ScreenMode = 'homepage' | 'signin' | 'signup' | 'verify' | 'dashboard';
-
-export type BrandTheme = 'dark' | 'light';
+export type ScreenMode = 'signin' | 'signup' | 'verify' | 'dashboard';
 
 export interface ClickInsight {
   id: string;

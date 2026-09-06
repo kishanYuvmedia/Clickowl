@@ -4,7 +4,6 @@ interface ClickOwlLogoProps {
   className?: string;
   variant?: 'full' | 'horizontal' | 'mark' | 'monochrome';
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  theme?: 'dark' | 'light';
   animated?: boolean;
 }
 
@@ -12,10 +11,8 @@ export const ClickOwlLogo: React.FC<ClickOwlLogoProps> = ({
   className = '',
   variant = 'full',
   size = 'md',
-  theme = 'light',
   animated = false,
 }) => {
-  // Dimensions according to size
   const iconSizes = {
     sm: 32,
     md: 44,
@@ -25,20 +22,18 @@ export const ClickOwlLogo: React.FC<ClickOwlLogoProps> = ({
 
   const iconDimension = iconSizes[size] || 44;
 
-  const isDark = theme === 'dark';
-  const yellowColor = '#FBBF24'; // vibrant amber/gold
+  const yellowColor = '#FBBF24';
   const eyeColor = '#FFFFFF';
   const pupilColor = '#111827';
   const beakColor = '#FFFFFF';
-  const wifiColor = isDark ? '#FFFFFF' : '#1F2937';
-  const textColor = isDark ? '#FFFFFF' : '#0F172A';
+  const wifiColor = '#1F2937';
+  const textColor = '#0F172A';
 
   return (
     <div
       className={`inline-flex items-center gap-3 select-none ${className}`}
       id="clickowl-logo"
     >
-      {/* Scalable SVG Owl Mark */}
       <svg
         width={iconDimension}
         height={iconDimension}
@@ -47,19 +42,13 @@ export const ClickOwlLogo: React.FC<ClickOwlLogoProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className={`shrink-0 ${animated ? 'transition-transform duration-300 hover:scale-105' : ''}`}
       >
-        {/* Signal / Wi-Fi waves above owl head */}
         <g id="wifi-signals" stroke={wifiColor} strokeWidth="3.5" strokeLinecap="round">
-          {/* Top outer arc */}
           <path d="M 44 20 C 54 13, 66 13, 76 20" />
-          {/* Middle arc */}
           <path d="M 49 26 C 56 21, 64 21, 71 26" />
-          {/* Inner small arc */}
           <path d="M 54 32 C 58 29, 62 29, 66 32" />
         </g>
 
-        {/* Stylized Owl Mask (Outer Shape with Wing/Ear Tufts) */}
         <g id="owl-mask">
-          {/* Combined stylized glasses/eyes shape with sleek horns */}
           <path
             d="M 22 46
                C 22 46, 32 49, 42 49
@@ -70,30 +59,26 @@ export const ClickOwlLogo: React.FC<ClickOwlLogoProps> = ({
                C 86 96, 68 94, 60 83
                C 52 94, 34 96, 23 84
                C 13 72, 14 56, 22 46 Z"
-            fill={variant === 'monochrome' ? (isDark ? '#FFFFFF' : '#111827') : yellowColor}
+            fill={variant === 'monochrome' ? '#111827' : yellowColor}
           />
 
-          {/* Left Eye Cutout & Eyeball */}
-          <circle cx="41" cy="67" r="17" fill={isDark ? '#0A0A0A' : '#FFFFFF'} />
-          <circle cx="41" cy="67" r="10" fill={variant === 'monochrome' ? (isDark ? '#FFFFFF' : '#111827') : yellowColor} />
-          <circle cx="41" cy="67" r="5" fill={isDark ? '#FFFFFF' : '#0F172A'} />
+          <circle cx="41" cy="67" r="17" fill="#FFFFFF" />
+          <circle cx="41" cy="67" r="10" fill={variant === 'monochrome' ? '#111827' : yellowColor} />
+          <circle cx="41" cy="67" r="5" fill="#0F172A" />
 
-          {/* Right Eye Cutout & Eyeball */}
-          <circle cx="79" cy="67" r="17" fill={isDark ? '#0A0A0A' : '#FFFFFF'} />
-          <circle cx="79" cy="67" r="10" fill={variant === 'monochrome' ? (isDark ? '#FFFFFF' : '#111827') : yellowColor} />
-          <circle cx="79" cy="67" r="5" fill={isDark ? '#FFFFFF' : '#0F172A'} />
+          <circle cx="79" cy="67" r="17" fill="#FFFFFF" />
+          <circle cx="79" cy="67" r="10" fill={variant === 'monochrome' ? '#111827' : yellowColor} />
+          <circle cx="79" cy="67" r="5" fill="#0F172A" />
 
-          {/* Center Beak (Crisp Inverted Triangle) */}
           <polygon
             points="60,78 54,92 66,92"
             fill={beakColor}
-            stroke={isDark ? 'none' : '#E5E7EB'}
+            stroke="#E5E7EB"
             strokeWidth="0.5"
           />
         </g>
       </svg>
 
-      {/* Typography: "Click Owl" + "Wisdom In Every Click" */}
       {variant !== 'mark' && (
         <div className="flex flex-col justify-center leading-none">
           <div className="flex items-center tracking-tight font-black">
