@@ -1,0 +1,28 @@
+export type ScreenMode = 'homepage' | 'signin' | 'signup' | 'verify' | 'dashboard';
+
+export type BrandTheme = 'dark' | 'light';
+
+export interface ClickInsight {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  timestamp: string;
+  score: number;
+}
+
+export interface MetricCardData {
+  title: string;
+  value: string;
+  change: string;
+  isPositive: boolean;
+  period: string;
+  iconName: string;
+}
+
+export interface FeatureItem {
+  icon: string;
+  title: string;
+  description: string;
+  badge?: string;
+}
