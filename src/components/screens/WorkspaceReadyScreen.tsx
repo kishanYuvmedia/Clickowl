@@ -38,7 +38,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
       className="min-h-screen pt-0 transition-colors duration-300 flex flex-col bg-slate-50 text-slate-900"
     >
       {/* Top Bar */}
-      <div className="bg-[#dcdcdc] border-b border-neutral-300 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      <div className="bg-[#F7F7F5] border-b border-neutral-300 px-4 sm:px-8 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button
             onClick={() => onNavigate('signin')}
@@ -65,7 +65,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
           <button className="p-1.5 rounded-lg bg-white/80 border border-neutral-300 text-neutral-700">
             <Bell className="w-4 h-4" />
           </button>
-          <div className="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-bold text-neutral-900 text-xs shadow-sm">
+          <div className="w-8 h-8 rounded-full bg-[#FFD10A] flex items-center justify-center font-bold text-[#010101] text-xs shadow-sm">
             JD
           </div>
         </div>
@@ -74,7 +74,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
       {/* Main Body */}
       <div className="flex-1 flex flex-col md:flex-row">
         {/* Left Sidebar */}
-        <aside className="w-full md:w-72 lg:w-80 bg-[#dcdcdc] border-r border-neutral-300 p-6 flex flex-col justify-between shrink-0 relative overflow-hidden">
+        <aside className="w-full md:w-72 lg:w-80 bg-[#F7F7F5] border-r border-neutral-300 p-6 flex flex-col justify-between shrink-0 relative overflow-hidden">
           <div className="space-y-6 relative z-10">
             <div className="pb-4 border-b border-neutral-300/80">
               <ClickOwlLogo variant="horizontal" size="sm" />
@@ -89,7 +89,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
                     : 'text-neutral-700 hover:bg-white/50'
                 }`}
               >
-                <BarChart3 className="w-4 h-4 text-amber-500" />
+                <BarChart3 className="w-4 h-4 text-[#FFD10A]" />
                 <span>Live Intelligence</span>
               </button>
 
@@ -101,7 +101,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
                     : 'text-neutral-700 hover:bg-white/50'
                 }`}
               >
-                <MousePointer className="w-4 h-4 text-amber-500" />
+                <MousePointer className="w-4 h-4 text-[#FFD10A]" />
                 <span>Click Streams</span>
               </button>
 
@@ -113,7 +113,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
                     : 'text-neutral-700 hover:bg-white/50'
                 }`}
               >
-                <Users className="w-4 h-4 text-amber-500" />
+                <Users className="w-4 h-4 text-[#FFD10A]" />
                 <span>Team Members</span>
               </button>
             </nav>
@@ -132,7 +132,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
         <main className="flex-1 p-6 sm:p-10 lg:p-12 overflow-y-auto">
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center py-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-700 text-xs font-bold mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFD10A]/20 text-[#010101] text-xs font-bold mb-4">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Setup Complete</span>
               </div>
@@ -149,7 +149,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
               <div className="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <div className="flex items-center justify-between text-xs text-neutral-500 font-semibold mb-2">
                   <span>Clicks Ingested</span>
-                  <Activity className="w-4 h-4 text-amber-500" />
+                    <Activity className="w-4 h-4 text-[#FFD10A]" />
                 </div>
                 <div className="text-2xl font-black text-neutral-950">14,820</div>
                 <div className="text-xs text-emerald-600 font-bold mt-1 flex items-center gap-1">
@@ -160,7 +160,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
               <div className="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <div className="flex items-center justify-between text-xs text-neutral-500 font-semibold mb-2">
                   <span>Wisdom Accuracy</span>
-                  <Sparkles className="w-4 h-4 text-amber-500" />
+                    <Sparkles className="w-4 h-4 text-[#FFD10A]" />
                 </div>
                 <div className="text-2xl font-black text-neutral-950">99.4%</div>
                 <div className="text-xs text-neutral-500 mt-1">High attribution confidence</div>
@@ -169,7 +169,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
               <div className="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <div className="flex items-center justify-between text-xs text-neutral-500 font-semibold mb-2">
                   <span>Focus Time Tracked</span>
-                  <Clock className="w-4 h-4 text-amber-500" />
+                    <Clock className="w-4 h-4 text-[#FFD10A]" />
                 </div>
                 <div className="text-2xl font-black text-neutral-950">18h 45m</div>
                 <div className="text-xs text-emerald-600 font-bold mt-1">Active team session</div>
@@ -198,7 +198,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
 
                 <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-200/70">
                   <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-amber-400 text-neutral-950 flex items-center justify-center text-xs font-bold">2</div>
+                    <div className="w-6 h-6 rounded-full bg-[#FFD10A] text-[#010101] flex items-center justify-center text-xs font-bold">2</div>
                     <div>
                       <div className="text-sm font-bold text-neutral-900">Embed ClickOwl Tracking Script</div>
                       <div className="text-xs text-neutral-500">Copy your site tracking script tag into your HTML header</div>
@@ -206,7 +206,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
                   </div>
                   <button
                     onClick={handleCopy}
-                    className="px-3 py-1.5 text-xs font-bold rounded-lg bg-neutral-900 text-white hover:bg-amber-400 hover:text-black transition-colors"
+                    className="px-3 py-1.5 text-xs font-bold rounded-lg bg-[#010101] text-white hover:bg-[#FFD10A] hover:text-[#010101] transition-colors"
                   >
                     {copiedKey ? 'Copied Code!' : 'Copy Script'}
                   </button>
@@ -222,7 +222,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
                   </div>
                   <button
                     onClick={() => onNavigate('signin')}
-                    className="flex items-center gap-1 text-xs font-bold text-amber-600 hover:underline"
+                    className="flex items-center gap-1 text-xs font-bold text-[#E8B900] hover:underline"
                   >
                     <span>Try Heatmap</span>
                     <ChevronRight className="w-3.5 h-3.5" />

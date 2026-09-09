@@ -75,16 +75,38 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
     }
   };
 
+  const getCodeInputClass = (idx: number) => {
+    if (isInvalid) {
+      return 'w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold bg-white focus:outline-none';
+    }
+    if (code[idx]) {
+      return 'w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold border border-[#E7E7E3] focus:outline-none';
+    }
+    return 'w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold bg-[#F7F7F5] border border-transparent focus:border-[#FFD10A] focus:outline-none transition-all';
+  };
+
+  const getCodeInputStyle = (idx: number): React.CSSProperties => {
+    if (isInvalid) {
+      return { border: '2px solid #C62828', borderRadius: '8px', color: '#171717' };
+    }
+    if (code[idx]) {
+      return { background: '#F0F0F0', border: '1px solid #E7E7E3', borderRadius: '8px', color: '#171717' };
+    }
+    return { borderRadius: '8px', color: '#171717' };
+  };
+
   return (
-    <div id="mail-confirmation-screen-container" className="w-full py-4 sm:py-8">
+    <div id="mail-confirmation-screen-container" className="w-full">
       <div className="flex items-center justify-end mb-4">
         <button
           onClick={toggleSimulateError}
-          className={`px-3 py-1.5 text-xs font-semibold rounded-xl border flex items-center gap-2 transition-all shadow-sm ${
-            isInvalid
-              ? 'border-red-400 text-red-500 bg-red-50'
-              : 'border-slate-300 text-slate-700 hover:bg-slate-100 bg-white'
-          }`}
+          className="px-3 py-1.5 text-xs font-semibold flex items-center gap-2 transition-all"
+          style={{
+            borderRadius: '8px',
+            border: isInvalid ? '1px solid #C62828' : '1px solid #E7E7E3',
+            color: isInvalid ? '#C62828' : '#171717',
+            background: isInvalid ? '#FFF5F5' : '#FFFFFF',
+          }}
           id="toggle-error-simulation-btn"
         >
           <AlertCircle className="w-3.5 h-3.5" />
@@ -92,17 +114,38 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 rounded-[32px] overflow-hidden border shadow-2xl transition-all bg-white border-slate-200/90 shadow-xl shadow-slate-200/50">
+      <div
+        className="grid grid-cols-1 md:grid-cols-12 overflow-hidden transition-all"
+        style={{
+          background: 'rgba(255, 255, 255, 0.55)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          borderRadius: '16px',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6)',
+        }}
+      >
         {/* Left Column */}
-        <div className="md:col-span-5 bg-[#dcdcdc] text-neutral-900 p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden min-h-[500px] rounded-t-[32px] md:rounded-tr-none md:rounded-l-[32px] border-b md:border-b-0 md:border-r border-neutral-300">
+        <div
+          className="md:col-span-5 p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden min-h-[480px]"
+          style={{
+            background: 'linear-gradient(0deg, rgba(247, 244, 188, 0.7) 0%, rgba(255, 241, 227, 0.7) 100%)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRight: '1px solid rgba(255, 255, 255, 0.4)',
+          }}
+        >
           <div className="relative z-10 space-y-6">
             <ClickOwlLogo variant="full" size="md" />
 
             <div className="pt-4">
-              <p className="text-2xl sm:text-3xl font-normal text-neutral-800">
+              <p className="text-2xl sm:text-3xl font-normal" style={{ color: '#2A2A2A' }}>
                 Welcome to
               </p>
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mt-1">
+              <h1
+                className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1"
+                style={{ color: '#010101' }}
+              >
                 ClickOwl
               </h1>
             </div>
@@ -118,13 +161,19 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
         </div>
 
         {/* Right Column */}
-        <div className="md:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+        <div
+          className="md:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center"
+          style={{ background: '#FFFFFF' }}
+        >
           <div className="max-w-md mx-auto w-full text-center">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 mb-3">
+            <h2
+              className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3"
+              style={{ color: '#010101' }}
+            >
               Check Your Mail
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-xs mx-auto mb-8">
-              We sent a 6-digit code to <span className="font-semibold text-neutral-900">johndoe@xyz.con</span>.
+            <p className="text-xs sm:text-sm leading-relaxed max-w-xs mx-auto mb-8" style={{ color: '#737373' }}>
+              We sent a 6-digit code to <span className="font-semibold" style={{ color: '#010101' }}>johndoe@xyz.con</span>.
               <br />
               Enter it below to verify your account.
             </p>
@@ -139,17 +188,12 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
                   value={code[idx]}
                   onChange={(e) => handleInputChange(idx, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(idx, e)}
-                  className={`w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold rounded-xl transition-all ${
-                    isInvalid
-                      ? 'border-2 border-red-500 text-neutral-900 bg-white focus:outline-none'
-                      : code[idx]
-                      ? 'bg-neutral-200 text-neutral-900 border border-neutral-400'
-                      : 'bg-[#dcdcdc] text-neutral-900 border border-transparent focus:border-amber-400 focus:outline-none'
-                  }`}
+                  className={getCodeInputClass(idx)}
+                  style={getCodeInputStyle(idx)}
                 />
               ))}
 
-              <span className="text-neutral-500 font-bold px-1">-</span>
+              <span className="font-bold px-1" style={{ color: '#737373' }}>-</span>
 
               {[3, 4, 5].map((idx) => (
                 <input
@@ -160,20 +204,15 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
                   value={code[idx]}
                   onChange={(e) => handleInputChange(idx, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(idx, e)}
-                  className={`w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold rounded-xl transition-all ${
-                    isInvalid
-                      ? 'border-2 border-red-500 text-neutral-900 bg-white focus:outline-none'
-                      : code[idx]
-                      ? 'bg-neutral-200 text-neutral-900 border border-neutral-400'
-                      : 'bg-[#dcdcdc] text-neutral-900 border border-transparent focus:border-amber-400 focus:outline-none'
-                  }`}
+                  className={getCodeInputClass(idx)}
+                  style={getCodeInputStyle(idx)}
                 />
               ))}
             </div>
 
             <div className="h-8 flex items-center justify-center mb-6">
               {isInvalid ? (
-                <p className="text-xs sm:text-sm font-semibold text-neutral-900">
+                <p className="text-xs sm:text-sm font-semibold" style={{ color: '#010101' }}>
                   Invalid Code !{' '}
                   <button
                     type="button"
@@ -182,15 +221,18 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
                       setCode(['', '', '', '', '', '']);
                       inputsRef.current[0]?.focus();
                     }}
-                    className="underline font-bold text-neutral-950 hover:text-amber-500 cursor-pointer"
+                    className="underline font-bold cursor-pointer transition-colors"
+                    style={{ color: '#010101' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E8B900'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = '#010101'; }}
                   >
                     Resend ?
                   </button>
                 </p>
               ) : (
-                <p className="text-xs sm:text-sm text-neutral-600 font-medium">
+                <p className="text-xs sm:text-sm font-medium" style={{ color: '#737373' }}>
                   Resend code in{' '}
-                  <span className="font-bold underline text-neutral-900">
+                  <span className="font-bold underline" style={{ color: '#010101' }}>
                     {formatTime(countdown)}
                   </span>
                 </p>
@@ -201,10 +243,22 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
               type="button"
               onClick={handleVerify}
               id="verify-email-submit-btn"
-              className="w-full py-3 text-sm font-semibold rounded-xl border border-neutral-800 bg-transparent text-neutral-900 hover:bg-neutral-100 transition-colors shadow-sm cursor-pointer"
+              className="w-full py-3 text-sm font-semibold transition-colors cursor-pointer"
+              style={{
+                border: '1px solid #E7E7E3',
+                borderRadius: '8px',
+                color: '#171717',
+                background: 'transparent',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#F7F7F5';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+              }}
             >
               {isVerified ? (
-                <span className="flex items-center justify-center gap-2 text-emerald-600">
+                <span className="flex items-center justify-center gap-2" style={{ color: '#16803C' }}>
                   <CheckCircle className="w-4 h-4" /> Code Verified!
                 </span>
               ) : (
@@ -212,12 +266,15 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
               )}
             </button>
 
-            <p className="text-xs text-neutral-600 mt-6">
+            <p className="text-xs mt-6" style={{ color: '#737373' }}>
               Wrong email?{' '}
               <button
                 type="button"
                 onClick={() => onNavigate('signup')}
-                className="font-bold text-neutral-900 underline hover:text-amber-500"
+                className="font-bold underline transition-colors"
+                style={{ color: '#010101' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#E8B900'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#010101'; }}
               >
                 Sign Up with different e-mail
               </button>

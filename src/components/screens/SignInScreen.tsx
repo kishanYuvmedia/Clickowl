@@ -23,18 +23,39 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div id="signin-screen-container" className="w-full py-4 sm:py-8">
-      <div className="grid grid-cols-1 md:grid-cols-12 rounded-[32px] overflow-hidden border shadow-2xl transition-all bg-white border-slate-200/90 shadow-xl shadow-slate-200/50">
+    <div id="signin-screen-container" className="w-full">
+      <div
+        className="grid grid-cols-1 md:grid-cols-12 overflow-hidden transition-all"
+        style={{
+          background: 'rgba(255, 255, 255, 0.55)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          borderRadius: '16px',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6)',
+        }}
+      >
         {/* Left Column */}
-        <div className="md:col-span-5 bg-[#dcdcdc] text-neutral-900 p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden min-h-[500px] rounded-t-[32px] md:rounded-tr-none md:rounded-l-[32px] border-b md:border-b-0 md:border-r border-neutral-300">
+        <div
+          className="md:col-span-5 p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden min-h-[480px]"
+          style={{
+            background: 'linear-gradient(0deg, rgba(247, 244, 188, 0.7) 0%, rgba(255, 241, 227, 0.7) 100%)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRight: '1px solid rgba(255, 255, 255, 0.4)',
+          }}
+        >
           <div className="relative z-10 space-y-6">
             <ClickOwlLogo variant="full" size="md" />
 
             <div className="pt-4">
-              <p className="text-2xl sm:text-3xl font-normal text-neutral-800">
+              <p className="text-2xl sm:text-3xl font-normal" style={{ color: '#2A2A2A' }}>
                 Welcome to
               </p>
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mt-1">
+              <h1
+                className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1"
+                style={{ color: '#010101' }}
+              >
                 ClickOwl
               </h1>
             </div>
@@ -50,15 +71,21 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
         </div>
 
         {/* Right Column */}
-        <div className="md:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+        <div
+          className="md:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center"
+          style={{ background: '#FFFFFF' }}
+        >
           <div className="max-w-md mx-auto w-full">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-8 text-neutral-900">
+            <h2
+              className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-8"
+              style={{ color: '#010101' }}
+            >
               Sign In
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none" style={{ color: '#737373' }}>
                   <Mail className="w-5 h-5" />
                 </div>
                 <input
@@ -68,12 +95,17 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
                   id="signin-email-input"
-                  className="w-full pl-11 pr-4 py-3 text-sm rounded-xl border border-neutral-800 bg-white text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  className="w-full pl-11 pr-4 py-3 text-sm bg-white transition-all placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#FFD10A] focus:border-transparent"
+                  style={{
+                    border: '1px solid #E7E7E3',
+                    borderRadius: '8px',
+                    color: '#171717',
+                  }}
                 />
               </div>
 
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none" style={{ color: '#737373' }}>
                   <Lock className="w-5 h-5" />
                 </div>
                 <input
@@ -83,12 +115,18 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
                   id="signin-password-input"
-                  className="w-full pl-11 pr-11 py-3 text-sm rounded-xl border border-neutral-800 bg-white text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  className="w-full pl-11 pr-11 py-3 text-sm bg-white transition-all placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#FFD10A] focus:border-transparent"
+                  style={{
+                    border: '1px solid #E7E7E3',
+                    borderRadius: '8px',
+                    color: '#171717',
+                  }}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600"
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center transition-colors"
+                  style={{ color: '#737373' }}
                   aria-label="Toggle password visibility"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -98,23 +136,48 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
               <button
                 type="submit"
                 id="signin-submit-btn"
-                className="w-full py-3.5 text-sm font-semibold rounded-xl bg-[#dcdcdc] text-neutral-900 hover:bg-neutral-300 transition-colors shadow-sm mt-2 cursor-pointer"
+                className="w-full py-3.5 text-sm font-semibold transition-colors cursor-pointer"
+                style={{
+                  background: '#FFD10A',
+                  color: '#010101',
+                  border: '1px solid #FFD10A',
+                  borderRadius: '8px',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#E8B900';
+                  e.currentTarget.style.borderColor = '#E8B900';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#FFD10A';
+                  e.currentTarget.style.borderColor = '#FFD10A';
+                }}
               >
                 {submitted ? 'Signing In...' : 'Sign In'}
               </button>
             </form>
 
             <div className="flex items-center my-6">
-              <div className="flex-1 border-t border-neutral-300"></div>
-              <span className="px-4 text-xs text-neutral-500 font-medium">or</span>
-              <div className="flex-1 border-t border-neutral-300"></div>
+              <div className="flex-1" style={{ borderTop: '1px solid #E7E7E3' }}></div>
+              <span className="px-4 text-xs font-medium" style={{ color: '#737373' }}>or</span>
+              <div className="flex-1" style={{ borderTop: '1px solid #E7E7E3' }}></div>
             </div>
 
             <button
               type="button"
               onClick={() => onNavigate('dashboard')}
               id="signin-google-btn"
-              className="w-full py-3 px-4 text-sm font-semibold rounded-xl border border-neutral-800 bg-white text-neutral-900 hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3 px-4 text-sm font-semibold bg-white flex items-center justify-center gap-2 transition-colors"
+              style={{
+                border: '1px solid #E7E7E3',
+                borderRadius: '8px',
+                color: '#171717',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#F7F7F5';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#FFFFFF';
+              }}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
@@ -125,12 +188,15 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
               <span>Sign In with Google</span>
             </button>
 
-            <p className="text-center text-xs sm:text-sm text-neutral-600 mt-6">
+            <p className="text-center text-xs sm:text-sm mt-6" style={{ color: '#737373' }}>
               Don't have an account yet?{' '}
               <button
                 type="button"
                 onClick={() => onNavigate('signup')}
-                className="font-bold text-neutral-900 underline hover:text-amber-500 transition-colors"
+                className="font-bold underline transition-colors"
+                style={{ color: '#010101' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#E8B900'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#010101'; }}
               >
                 Create an Account
               </button>
