@@ -21,9 +21,9 @@ export const DashboardTopBar: React.FC<DashboardTopBarProps> = ({ onProfile, onL
   }, []);
 
   return (
-    <header className="h-16 bg-white border-b border-border px-6 flex items-center justify-between shrink-0">
+    <header className="h-16 bg-surface border-b border-border px-6 flex items-center justify-between shrink-0">
       <div className="flex items-center gap-4">
-        <div className="w-8 h-8 rounded-lg bg-gray-50 border border-border flex items-center justify-center">
+        <div className="w-8 h-8 rounded-lg bg-bg border border-border flex items-center justify-center">
           <Bell className="w-4 h-4 text-muted" />
         </div>
       </div>
@@ -31,7 +31,7 @@ export const DashboardTopBar: React.FC<DashboardTopBarProps> = ({ onProfile, onL
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setShowDropdown(!showDropdown)}
-          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-bg transition-colors"
         >
           <div className="w-8 h-8 rounded-full bg-ink flex items-center justify-center shadow-sm">
             <span className="text-white text-[11px] font-bold">DS</span>
@@ -44,14 +44,14 @@ export const DashboardTopBar: React.FC<DashboardTopBarProps> = ({ onProfile, onL
         </button>
 
         {showDropdown && (
-          <div className="absolute top-full right-0 mt-2 bg-white border border-border rounded-xl shadow-xl z-50 py-1.5 min-w-[180px]">
+          <div className="absolute top-full right-0 mt-2 bg-surface border border-border rounded-xl shadow-xl z-50 py-1.5 min-w-[180px]">
             <div className="px-4 py-3 border-b border-border">
               <p className="text-[13px] font-semibold text-ink">Dixita S.</p>
               <p className="text-[11px] text-muted mt-0.5">dixita@clickowl.io</p>
             </div>
             <button
               onClick={() => { setShowDropdown(false); onProfile?.(); }}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-ink hover:bg-gray-50 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-ink hover:bg-bg transition-colors"
             >
               <User className="w-4 h-4 text-muted" />
               Profile

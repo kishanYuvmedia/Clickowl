@@ -77,7 +77,7 @@ export const CrmConfigurationScreen: React.FC<CrmConfigurationProps> = ({ onBack
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <nav className="flex items-center gap-1.5 text-xs text-muted">
         <button onClick={onBack} className="hover:text-ink transition-colors">CRM Connection</button>
         <ChevronRight className="w-3 h-3" />
@@ -129,7 +129,7 @@ export const CrmConfigurationScreen: React.FC<CrmConfigurationProps> = ({ onBack
                               value={editFieldValue}
                               onChange={(e) => setEditFieldValue(e.target.value)}
                               autoFocus
-                              className="flex-1 px-2.5 py-1.5 text-sm border border-ink/30 rounded-md bg-surface text-ink focus:outline-none focus:ring-1 focus:ring-ink/20"
+                              className="input"
                             />
                             <button onClick={() => handleSaveField(idx)} className="p-1 rounded text-success hover:bg-success/10 transition-colors">
                               <Check className="w-4 h-4" />
@@ -185,7 +185,7 @@ export const CrmConfigurationScreen: React.FC<CrmConfigurationProps> = ({ onBack
                             value={editLeadField}
                             onChange={(e) => setEditLeadField(e.target.value)}
                             autoFocus
-                            className="w-full px-2.5 py-1.5 text-sm border border-ink/30 rounded-md bg-surface text-ink focus:outline-none focus:ring-1 focus:ring-ink/20"
+                            className="input"
                           />
                         ) : (
                           <span className="text-sm text-ink font-medium">{row.crmField}</span>
@@ -197,7 +197,7 @@ export const CrmConfigurationScreen: React.FC<CrmConfigurationProps> = ({ onBack
                             type="text"
                             value={editLeadAnalytics}
                             onChange={(e) => setEditLeadAnalytics(e.target.value)}
-                            className="w-full px-2.5 py-1.5 text-sm border border-ink/30 rounded-md bg-surface text-ink focus:outline-none focus:ring-1 focus:ring-ink/20"
+                            className="input"
                           />
                         ) : (
                           <span className={`text-sm ${row.analyticsField.includes('not counted') ? 'text-muted italic' : 'text-ink'}`}>
@@ -210,7 +210,7 @@ export const CrmConfigurationScreen: React.FC<CrmConfigurationProps> = ({ onBack
                           <select
                             value={editLeadType}
                             onChange={(e) => setEditLeadType(e.target.value as 'Positive' | 'Negative')}
-                            className="px-2.5 py-1.5 text-sm border border-ink/30 rounded-md bg-surface text-ink focus:outline-none focus:ring-1 focus:ring-ink/20"
+                            className="select"
                           >
                             <option value="Positive">Positive</option>
                             <option value="Negative">Negative</option>

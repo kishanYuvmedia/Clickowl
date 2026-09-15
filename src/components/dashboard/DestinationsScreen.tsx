@@ -137,14 +137,14 @@ export const DestinationsScreen: React.FC<DestinationsScreenProps> = ({ onSelect
   });
 
   return (
-    <div className="max-w-[1100px] mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <div className="text-xs text-muted flex items-center gap-1.5">
         <span>Destinations</span>
       </div>
 
       <div>
         <h1 className="text-2xl font-bold text-ink">Destinations</h1>
-        <p className="text-sm text-muted mt-1">
+        <p className="text-sm text-muted mt-1.5">
           Connect your data to the tools your team already uses.
         </p>
       </div>
@@ -173,7 +173,7 @@ export const DestinationsScreen: React.FC<DestinationsScreenProps> = ({ onSelect
             placeholder="Search destinations..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 pr-3 py-2 text-xs border border-border rounded-lg bg-surface text-ink placeholder:text-muted focus:outline-none focus:border-ink/30 w-56"
+            className="input-search pl-9 w-56"
           />
         </div>
       </div>
@@ -183,7 +183,7 @@ export const DestinationsScreen: React.FC<DestinationsScreenProps> = ({ onSelect
           <div
             key={dest.name}
             onClick={() => onSelectDestination?.(dest.name)}
-            className="group bg-surface border border-border rounded-xl p-5 hover:border-ink/20 transition-all cursor-pointer"
+            className="group bg-surface border border-border rounded-xl p-6 hover:border-ink/20 transition-all cursor-pointer"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-3.5">

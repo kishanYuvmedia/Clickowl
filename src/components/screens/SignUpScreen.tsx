@@ -25,22 +25,14 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
     onNavigate('verify');
   };
 
-  const inputStyle = {
-    border: '1px solid #E7E7E3',
-    borderRadius: '8px',
-    color: '#171717',
-  };
-
   return (
     <div id="signup-screen-container" className="w-full">
       <div
-        className="grid grid-cols-1 md:grid-cols-12 overflow-hidden transition-all"
+        className="grid grid-cols-1 md:grid-cols-12 overflow-hidden rounded-2xl border border-white/50"
         style={{
           background: 'rgba(255, 255, 255, 0.55)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.5)',
-          borderRadius: '16px',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6)',
         }}
       >
@@ -58,13 +50,10 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
             <ClickOwlLogo variant="full" size="md" />
 
             <div className="pt-4">
-              <p className="text-2xl sm:text-3xl font-normal" style={{ color: '#2A2A2A' }}>
+              <p className="text-2xl sm:text-3xl font-normal text-ink-soft">
                 Welcome to
               </p>
-              <h1
-                className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1"
-                style={{ color: '#010101' }}
-              >
+              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1 text-ink">
                 ClickOwl
               </h1>
             </div>
@@ -80,21 +69,15 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
         </div>
 
         {/* Right Column */}
-        <div
-          className="md:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center"
-          style={{ background: '#FFFFFF' }}
-        >
+        <div className="md:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center bg-surface">
           <div className="max-w-md mx-auto w-full">
-            <h2
-              className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-8"
-              style={{ color: '#010101' }}
-            >
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center text-ink mb-8">
               Sign Up
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none" style={{ color: '#737373' }}>
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted">
                   <Mail className="w-5 h-5" />
                 </div>
                 <input
@@ -104,13 +87,12 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
                   id="signup-email-input"
-                  className="w-full pl-11 pr-4 py-3 text-sm bg-white transition-all placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#FFD10A] focus:border-transparent"
-                  style={inputStyle}
+                  className="input pl-11 focus:ring-2 focus:ring-brand focus:border-transparent"
                 />
               </div>
 
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none" style={{ color: '#737373' }}>
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted">
                   <Lock className="w-5 h-5" />
                 </div>
                 <input
@@ -120,21 +102,19 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
                   id="signup-password-input"
-                  className="w-full pl-11 pr-11 py-3 text-sm bg-white transition-all placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#FFD10A] focus:border-transparent"
-                  style={inputStyle}
+                  className="input pl-11 pr-11 focus:ring-2 focus:ring-brand focus:border-transparent"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center transition-colors"
-                  style={{ color: '#737373' }}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-muted hover:text-ink transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
 
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none" style={{ color: '#737373' }}>
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted">
                   <Lock className="w-5 h-5" />
                 </div>
                 <input
@@ -144,14 +124,12 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Confirm Password"
                   id="signup-confirm-password-input"
-                  className="w-full pl-11 pr-11 py-3 text-sm bg-white transition-all placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#FFD10A] focus:border-transparent"
-                  style={inputStyle}
+                  className="input pl-11 pr-11 focus:ring-2 focus:ring-brand focus:border-transparent"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center transition-colors"
-                  style={{ color: '#737373' }}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-muted hover:text-ink transition-colors"
                 >
                   {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -163,17 +141,11 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
                   id="terms-checkbox"
                   checked={agreed}
                   onChange={(e) => setAgreed(e.target.checked)}
-                  className="w-4 h-4 rounded cursor-pointer accent-[#FFD10A]"
-                  style={{ borderColor: '#E7E7E3' }}
+                  className="w-4 h-4 rounded border-border cursor-pointer accent-brand"
                 />
-                <label htmlFor="terms-checkbox" className="text-xs" style={{ color: '#737373' }}>
+                <label htmlFor="terms-checkbox" className="text-xs text-muted">
                   I agree the{' '}
-                  <span
-                    className="underline font-medium cursor-pointer transition-colors"
-                    style={{ color: '#010101' }}
-                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#E8B900'; }}
-                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#010101'; }}
-                  >
+                  <span className="underline font-medium cursor-pointer text-ink hover:text-brand-hover transition-colors">
                     Terms & Conditions
                   </span>
                 </label>
@@ -182,48 +154,23 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
               <button
                 type="submit"
                 id="signup-submit-btn"
-                className="w-full py-3.5 text-sm font-semibold transition-colors cursor-pointer mt-3"
-                style={{
-                  background: '#FFD10A',
-                  color: '#010101',
-                  border: '1px solid #FFD10A',
-                  borderRadius: '8px',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#E8B900';
-                  e.currentTarget.style.borderColor = '#E8B900';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#FFD10A';
-                  e.currentTarget.style.borderColor = '#FFD10A';
-                }}
+                className="btn-primary w-full py-3 text-sm mt-3"
               >
                 Sign Up
               </button>
             </form>
 
             <div className="flex items-center my-6">
-              <div className="flex-1" style={{ borderTop: '1px solid #E7E7E3' }}></div>
-              <span className="px-4 text-xs font-medium" style={{ color: '#737373' }}>or</span>
-              <div className="flex-1" style={{ borderTop: '1px solid #E7E7E3' }}></div>
+              <div className="flex-1 border-t border-border"></div>
+              <span className="px-4 text-xs font-medium text-muted">or</span>
+              <div className="flex-1 border-t border-border"></div>
             </div>
 
             <button
               type="button"
               onClick={() => onNavigate('verify')}
               id="signup-google-btn"
-              className="w-full py-3 px-4 text-sm font-semibold bg-white flex items-center justify-center gap-2 transition-colors"
-              style={{
-                border: '1px solid #E7E7E3',
-                borderRadius: '8px',
-                color: '#171717',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#F7F7F5';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#FFFFFF';
-              }}
+              className="btn-secondary w-full py-3 px-4 text-sm flex items-center justify-center gap-2"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
@@ -234,15 +181,12 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
               <span>Sign up With Google</span>
             </button>
 
-            <p className="text-center text-xs sm:text-sm mt-6" style={{ color: '#737373' }}>
+            <p className="text-center text-xs sm:text-sm mt-6 text-muted">
               Already have an account?{' '}
               <button
                 type="button"
                 onClick={() => onNavigate('signin')}
-                className="font-bold underline transition-colors"
-                style={{ color: '#010101' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#E8B900'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = '#010101'; }}
+                className="font-bold underline text-ink hover:text-brand-hover transition-colors"
               >
                 Sign In
               </button>

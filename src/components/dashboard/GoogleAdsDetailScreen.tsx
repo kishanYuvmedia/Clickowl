@@ -38,7 +38,7 @@ export const GoogleAdsDetailScreen: React.FC<{ onBack: () => void; onDisconnect:
   const [showActions, setShowActions] = useState(false);
 
   return (
-    <div className="max-w-full space-y-5">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <div className="flex items-center gap-3">
         <button onClick={onBack} className="text-muted hover:text-ink transition-colors">
           <ArrowLeft className="w-4 h-4" />
@@ -88,29 +88,29 @@ export const GoogleAdsDetailScreen: React.FC<{ onBack: () => void; onDisconnect:
       {activeTab === 'overview' && (
         <div className="space-y-5">
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Events Synced</p>
               <p className="text-xl font-bold text-ink">{connectionData.eventsSynced.toLocaleString()}</p>
               <div className="flex items-center gap-1 mt-1"><TrendingUp className="w-3 h-3 text-success" /><span className="text-xs text-success font-semibold">+12.4%</span></div>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Conversions</p>
               <p className="text-xl font-bold text-ink">{connectionData.conversions.toLocaleString()}</p>
               <div className="flex items-center gap-1 mt-1"><TrendingUp className="w-3 h-3 text-success" /><span className="text-xs text-success font-semibold">+8.2%</span></div>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Ad Spend</p>
               <p className="text-xl font-bold text-ink">{connectionData.spend}</p>
               <div className="flex items-center gap-1 mt-1"><TrendingDown className="w-3 h-3 text-danger" /><span className="text-xs text-danger font-semibold">+3.1%</span></div>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">ROAS</p>
               <p className="text-xl font-bold text-ink">4.2x</p>
               <div className="flex items-center gap-1 mt-1"><TrendingUp className="w-3 h-3 text-success" /><span className="text-xs text-success font-semibold">+0.3x</span></div>
             </div>
           </div>
 
-          <div className="bg-surface border border-border rounded-xl p-5">
+          <div className="bg-surface border border-border rounded-xl p-6">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-bold text-ink">Connection Details</h3>
             </div>
@@ -145,7 +145,7 @@ export const GoogleAdsDetailScreen: React.FC<{ onBack: () => void; onDisconnect:
                 <p className="text-sm font-medium text-ink">{field.label}</p>
               </div>
               {field.type === 'select' && (
-                <select defaultValue={field.value} className="px-3 py-1.5 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20">
+                <select defaultValue={field.value} className="px-3 py-1.5 text-sm border border-border rounded-lg bg-surface text-ink focus:outline-none focus:border-ink/20">
                   {field.options?.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
               )}

@@ -25,7 +25,7 @@ export const SuccessToast: React.FC<SuccessToastProps> = ({
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-slide-up">
-      <div className="flex items-center gap-3 px-5 py-3 bg-ink text-white rounded-xl shadow-xl">
+      <div className="flex items-center gap-3 px-5 py-3 bg-ink text-white rounded-xl shadow-lg">
         <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
           <Check className="w-3.5 h-3.5 text-white" />
         </div>

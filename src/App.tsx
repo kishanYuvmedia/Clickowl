@@ -102,7 +102,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen font-['Inter',sans-serif] transition-colors duration-150 bg-gray-50 text-ink" id="clickowl-app-root">
+    <div className="min-h-screen font-['Inter',sans-serif] transition-colors duration-150 bg-bg text-ink" id="clickowl-app-root">
       <main>
         <Routes>
           <Route path="/signin" element={<AuthLayout currentScreen="signin" onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)}><SignInScreen onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)} /></AuthLayout>} />

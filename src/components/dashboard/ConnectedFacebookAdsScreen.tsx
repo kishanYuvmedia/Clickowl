@@ -61,7 +61,7 @@ export const ConnectedFacebookAdsScreen: React.FC<ConnectedFacebookAdsProps> = (
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-5">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <button
         onClick={onBack}
         className="flex items-center gap-1.5 text-xs font-medium text-muted hover:text-ink transition-colors"
@@ -108,7 +108,7 @@ export const ConnectedFacebookAdsScreen: React.FC<ConnectedFacebookAdsProps> = (
             ].map((metric) => (
               <div
                 key={metric.label}
-                className="bg-bg rounded-xl p-4 border border-border hover:border-ink/15 transition-colors"
+                className="bg-bg rounded-xl p-6 border border-border hover:border-ink/15 transition-colors"
               >
                 <p className="text-xl font-bold text-ink tracking-tight">{metric.value}</p>
                 <p className="text-[11px] text-muted mt-1 font-medium">{metric.label}</p>
@@ -156,7 +156,7 @@ export const ConnectedFacebookAdsScreen: React.FC<ConnectedFacebookAdsProps> = (
                             value={editValue}
                             onChange={(e) => setEditValue(e.target.value)}
                             autoFocus
-                            className="flex-1 px-2.5 py-1.5 text-sm border border-ink/30 rounded-md bg-surface text-ink focus:outline-none focus:ring-1 focus:ring-ink/20"
+                            className="flex-1 px-2.5 py-1.5 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:ring-1 focus:ring-ink/20"
                           />
                           <button
                             onClick={() => handleSaveEdit(idx)}

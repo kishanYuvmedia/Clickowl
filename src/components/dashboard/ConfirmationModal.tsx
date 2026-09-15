@@ -27,13 +27,13 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-ink/20 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      <div className="relative bg-white border border-border rounded-2xl shadow-2xl w-[400px] mx-4 overflow-hidden animate-in">
+      <div className="relative bg-surface border border-border rounded-2xl shadow-xl w-[400px] mx-4 overflow-hidden animate-in">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-lg hover:bg-bg transition-colors"
         >
           <X className="w-4 h-4 text-muted" />
         </button>
@@ -41,17 +41,17 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <div className="p-6 space-y-4">
           <div className="flex items-start gap-4">
             {variant === 'danger' && (
-              <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-danger/10 flex items-center justify-center flex-shrink-0">
                 <AlertTriangle className="w-6 h-6 text-danger" />
               </div>
             )}
             {variant === 'warning' && (
-              <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-warning/10 flex items-center justify-center flex-shrink-0">
                 <AlertTriangle className="w-6 h-6 text-warning" />
               </div>
             )}
             {variant === 'default' && (
-              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-bg flex items-center justify-center flex-shrink-0">
                 <AlertTriangle className="w-6 h-6 text-muted" />
               </div>
             )}
@@ -65,7 +65,7 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <div className="px-6 pb-6 flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 py-2.5 text-[13px] font-semibold text-muted bg-gray-50 border border-border rounded-xl hover:bg-gray-100 transition-colors"
+            className="flex-1 py-2.5 text-[13px] font-semibold text-muted bg-bg border border-border rounded-xl hover:bg-border/30 transition-colors"
           >
             {cancelText}
           </button>
@@ -76,9 +76,9 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             }}
             className={`flex-1 py-2.5 text-[13px] font-semibold rounded-xl transition-colors ${
               variant === 'danger'
-                ? 'bg-danger text-white hover:bg-red-600'
+                ? 'bg-danger text-white hover:bg-danger/90'
                 : variant === 'warning'
-                ? 'bg-warning text-white hover:bg-orange-600'
+                ? 'bg-warning text-white hover:bg-warning/90'
                 : 'bg-ink text-white hover:bg-ink-soft'
             }`}
           >

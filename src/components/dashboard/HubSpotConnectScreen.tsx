@@ -61,7 +61,7 @@ export const HubSpotConnectScreen: React.FC<{ onBack: () => void; onSave: () => 
         </div>
       ) : (
         <div className="space-y-5">
-          <div className="bg-surface border border-border rounded-xl p-5">
+          <div className="bg-surface border border-border rounded-xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <Check className="w-5 h-5 text-success" />
               <span className="text-sm font-bold text-ink">Connected to HubSpot</span>

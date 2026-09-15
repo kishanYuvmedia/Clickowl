@@ -22,7 +22,7 @@ export const ManageWebhookScreen: React.FC<ManageWebhookProps> = ({ onBack }) =>
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <nav className="flex items-center gap-1.5 text-xs text-muted">
         <button onClick={onBack} className="hover:text-ink transition-colors">CRM Connection</button>
         <ChevronRight className="w-3 h-3" />
@@ -66,7 +66,7 @@ export const ManageWebhookScreen: React.FC<ManageWebhookProps> = ({ onBack }) =>
                 type="text"
                 readOnly
                 value="https://hook.clickowl.io/crm/8×2k9"
-                className="flex-1 px-3.5 py-2.5 text-sm border border-border rounded-lg bg-bg text-ink font-mono focus:outline-none"
+                className="input font-mono"
               />
               <button
                 onClick={() => handleCopy('https://hook.clickowl.io/crm/8×2k9', 'url')}
@@ -89,7 +89,7 @@ export const ManageWebhookScreen: React.FC<ManageWebhookProps> = ({ onBack }) =>
                 type="text"
                 readOnly
                 value="XYZ_123"
-                className="flex-1 px-3.5 py-2.5 text-sm border border-border rounded-lg bg-bg text-ink font-mono focus:outline-none"
+                className="input font-mono"
               />
               <button
                 onClick={() => handleCopy('XYZ_123', 'passcode')}

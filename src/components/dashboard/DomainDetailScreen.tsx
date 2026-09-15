@@ -58,7 +58,7 @@ export const DomainDetailScreen: React.FC<DomainDetailProps> = ({
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-5">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <button
         onClick={onBack}
         className="flex items-center gap-1.5 text-xs font-medium text-muted hover:text-ink transition-colors"
@@ -67,7 +67,7 @@ export const DomainDetailScreen: React.FC<DomainDetailProps> = ({
         <span>Site Connections</span>
       </button>
 
-      <div className="bg-surface border border-border rounded-xl p-5">
+      <div className="bg-surface border border-border rounded-xl p-6">
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3.5">
             <div className="w-10 h-10 rounded-lg bg-bg border border-border flex items-center justify-center">

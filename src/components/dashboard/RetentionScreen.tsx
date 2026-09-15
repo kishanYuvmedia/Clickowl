@@ -31,11 +31,11 @@ export const RetentionScreen: React.FC = () => {
   const [selectedMetric, setSelectedMetric] = useState('cohort');
 
   return (
-    <div className="max-w-full space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-ink">Retention</h1>
-          <p className="text-sm text-muted mt-1">Analyze user retention and engagement over time.</p>
+          <p className="text-sm text-muted mt-1.5">Analyze user retention and engagement over time.</p>
         </div>
         <div className="flex items-center gap-2">
           <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-muted hover:text-ink border border-border rounded-md hover:border-ink/20 transition-colors">
@@ -45,7 +45,7 @@ export const RetentionScreen: React.FC = () => {
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-3 py-1.5 text-xs border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20 pr-8"
+              className="px-3 py-1.5 text-xs border border-border rounded-lg bg-surface text-ink focus:outline-none focus:border-ink/20 pr-8"
             >
               <option value="daily">Daily</option>
               <option value="weekly">Weekly</option>
@@ -57,7 +57,7 @@ export const RetentionScreen: React.FC = () => {
 
       <div className="grid grid-cols-4 gap-4">
         {retentionMetrics.map((metric) => (
-          <div key={metric.label} className="bg-surface border border-border rounded-xl p-4">
+          <div key={metric.label} className="bg-surface border border-border rounded-xl p-6">
             <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">{metric.label}</p>
             <p className="text-xl font-bold text-ink">{metric.value}</p>
             <div className="flex items-center gap-1 mt-1">

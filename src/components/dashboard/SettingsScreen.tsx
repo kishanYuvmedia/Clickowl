@@ -48,14 +48,14 @@ function SettingsRow({ field }: { field: SettingsField }) {
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className="px-3 py-1.5 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20 w-64"
+            className="input w-64"
           />
         )}
         {field.type === 'select' && (
           <select
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className="px-3 py-1.5 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20 w-64"
+            className="select w-64"
           >
             {field.options?.map((opt) => (
               <option key={opt} value={opt}>{opt}</option>
@@ -80,10 +80,10 @@ export const SettingsScreen: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'general' | 'localization' | 'data'>('general');
 
   return (
-    <div className="max-w-[800px] space-y-6">
+    <div className="max-w-[900px] mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-ink">Settings</h1>
-        <p className="text-sm text-muted mt-1">Manage your workspace configuration and preferences.</p>
+        <p className="text-sm text-muted mt-1.5">Manage your workspace configuration and preferences.</p>
       </div>
 
       <div className="flex items-center gap-0 border-b border-border">

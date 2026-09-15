@@ -28,7 +28,7 @@ export const CrmLogsScreen: React.FC<CrmLogsProps> = ({ onBack }) => {
   });
 
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <nav className="flex items-center gap-1.5 text-xs text-muted">
         <button onClick={onBack} className="hover:text-ink transition-colors">CRM Connection</button>
         <ChevronRight className="w-3 h-3" />
@@ -85,7 +85,7 @@ export const CrmLogsScreen: React.FC<CrmLogsProps> = ({ onBack }) => {
                 placeholder="Search Events"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8 pr-3 py-1.5 text-xs border border-border rounded-lg bg-bg text-ink w-44 focus:outline-none focus:ring-1 focus:ring-ink/20"
+                className="input-search pl-9 w-44"
               />
             </div>
           </div>

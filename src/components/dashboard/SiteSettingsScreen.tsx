@@ -12,7 +12,7 @@ export const SiteSettingsScreen: React.FC<{ onBack: () => void; onDisconnect: ()
   const [crossDomain, setCrossDomain] = useState(false);
 
   return (
-    <div className="max-w-[800px] space-y-6">
+    <div className="max-w-[900px] mx-auto space-y-6">
       <div className="flex items-center gap-3">
         <button onClick={onBack} className="text-muted hover:text-ink transition-colors">
           <ArrowLeft className="w-4 h-4" />
@@ -41,15 +41,15 @@ export const SiteSettingsScreen: React.FC<{ onBack: () => void; onDisconnect: ()
         <div className="bg-surface border border-border rounded-xl p-6 space-y-4">
           <div>
             <label className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1 block">Site Name</label>
-            <input type="text" value={siteName} onChange={(e) => setSiteName(e.target.value)} className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20" />
+            <input type="text" value={siteName} onChange={(e) => setSiteName(e.target.value)} className="input" />
           </div>
           <div>
             <label className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1 block">Domain</label>
-            <input type="text" value={domainName} onChange={(e) => setDomainName(e.target.value)} className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20" />
+            <input type="text" value={domainName} onChange={(e) => setDomainName(e.target.value)} className="input" />
           </div>
           <div>
             <label className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1 block">Timezone</label>
-            <select className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20">
+            <select className="select">
               <option>UTC+05:30 (IST)</option>
               <option>UTC+00:00 (GMT)</option>
               <option>UTC-05:00 (EST)</option>
@@ -92,11 +92,11 @@ export const SiteSettingsScreen: React.FC<{ onBack: () => void; onDisconnect: ()
           <h3 className="text-sm font-bold text-ink">Advanced Settings</h3>
           <div>
             <label className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1 block">Custom Domain</label>
-            <input type="text" placeholder="tracking.yourdomain.com" className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink placeholder:text-muted focus:outline-none focus:border-ink/20" />
+            <input type="text" placeholder="tracking.yourdomain.com" className="input" />
           </div>
           <div>
             <label className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1 block">Script Version</label>
-            <select className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20">
+            <select className="select">
               <option>Latest (v3.2.1)</option>
               <option>Stable (v3.1.0)</option>
               <option>Legacy (v2.8.4)</option>
@@ -104,7 +104,7 @@ export const SiteSettingsScreen: React.FC<{ onBack: () => void; onDisconnect: ()
           </div>
           <div>
             <label className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1 block">Event Buffer Size</label>
-            <input type="number" defaultValue={50} className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20" />
+            <input type="number" defaultValue={50} className="input" />
           </div>
           <div className="flex justify-end">
             <button className="flex items-center gap-2 px-4 py-2 bg-ink text-white text-sm font-medium rounded-md hover:bg-ink/90 transition-colors">

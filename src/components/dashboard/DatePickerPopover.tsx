@@ -81,7 +81,7 @@ function CalendarMonth({
             {day !== null && (
               <button
                 onClick={() => onSelect(new Date(year, month, day))}
-                className={`relative w-8 h-8 flex items-center justify-center rounded-md text-xs transition-colors ${
+                className={`relative w-8 h-8 flex items-center justify-center rounded-lg text-xs transition-colors ${
                   isSelected(day)
                     ? 'bg-ink text-white font-bold z-10'
                     : isInRange(day)
@@ -185,7 +185,7 @@ export const DatePickerPopover: React.FC<DatePickerPopoverProps> = ({ onClose })
                 type="text"
                 value={fromDate}
                 onChange={(e) => setFromDate(e.target.value)}
-                className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-md text-ink focus:outline-none focus:border-ink/20"
+                className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-lg text-ink focus:outline-none focus:border-ink/20"
               />
             </div>
             <div>
@@ -194,7 +194,7 @@ export const DatePickerPopover: React.FC<DatePickerPopoverProps> = ({ onClose })
                 type="text"
                 value={toDate}
                 onChange={(e) => setToDate(e.target.value)}
-                className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-md text-ink focus:outline-none focus:border-ink/20"
+                className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-lg text-ink focus:outline-none focus:border-ink/20"
               />
             </div>
           </div>
@@ -222,7 +222,7 @@ export const DatePickerPopover: React.FC<DatePickerPopoverProps> = ({ onClose })
                 <select
                   value={compareTo}
                   onChange={(e) => setCompareTo(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-md text-ink focus:outline-none focus:border-ink/20"
+                  className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-lg text-ink focus:outline-none focus:border-ink/20"
                 >
                   <option>Previous Period</option>
                   <option>Previous Year</option>
@@ -235,7 +235,7 @@ export const DatePickerPopover: React.FC<DatePickerPopoverProps> = ({ onClose })
                   type="text"
                   value={compFromDate}
                   onChange={(e) => setCompFromDate(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-md text-ink focus:outline-none focus:border-ink/20"
+                  className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-lg text-ink focus:outline-none focus:border-ink/20"
                 />
               </div>
               <div>
@@ -244,7 +244,7 @@ export const DatePickerPopover: React.FC<DatePickerPopoverProps> = ({ onClose })
                   type="text"
                   value={compToDate}
                   onChange={(e) => setCompToDate(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-md text-ink focus:outline-none focus:border-ink/20"
+                  className="w-full px-2.5 py-1.5 text-xs bg-bg border border-border rounded-lg text-ink focus:outline-none focus:border-ink/20"
                 />
               </div>
             </div>
@@ -263,7 +263,7 @@ export const DatePickerPopover: React.FC<DatePickerPopoverProps> = ({ onClose })
               ))}
             </div>
 
-            <button className="w-full mt-4 px-3 py-2 bg-ink text-white text-xs font-semibold rounded-md hover:bg-ink-soft transition-colors">
+            <button className="w-full mt-4 px-3 py-2 bg-ink text-white text-xs font-semibold rounded-lg hover:bg-ink-soft transition-colors">
               Apply
             </button>
           </div>

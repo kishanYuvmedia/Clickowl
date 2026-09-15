@@ -92,7 +92,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
   }, [activePage]);
 
   return (
-    <aside className="w-[240px] h-screen bg-white flex flex-col border-r border-border shrink-0">
+    <aside className="w-[240px] h-screen bg-surface flex flex-col border-r border-border shrink-0">
       <div className="px-5 h-16 flex items-center border-b border-border">
         <ClickOwlLogo variant="horizontal" size="sm" />
       </div>
@@ -111,12 +111,12 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                   onNavigate(item.id);
                 }
               }}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-150 ${
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-150 ${
                 isActive(item.id) && !item.children
                   ? 'bg-ink text-white shadow-md'
                   : isParentActive(item)
-                  ? 'text-ink bg-gray-50'
-                  : 'text-muted hover:text-ink hover:bg-gray-50'
+                  ? 'text-ink bg-bg'
+                  : 'text-muted hover:text-ink hover:bg-bg'
               }`}
             >
               <span className={isActive(item.id) && !item.children ? 'text-white' : 'text-muted'}>
@@ -135,15 +135,15 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
             </button>
 
             {item.children && expandedItems.includes(item.id) && (
-              <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-gray-100 pl-3">
+              <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-border pl-3">
                 {item.children.map((child) => (
                   <button
                     key={child.id}
                     onClick={() => onNavigate(child.id)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-all duration-150 ${
+                    className={`w-full text-left px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-150 ${
                       isActive(child.id)
-                        ? 'bg-brand text-ink font-semibold shadow-sm'
-                        : 'text-muted hover:text-ink hover:bg-gray-50'
+                        ? 'bg-brand text-ink shadow-sm'
+                        : 'text-muted hover:text-ink hover:bg-bg'
                     }`}
                   >
                     {child.label}

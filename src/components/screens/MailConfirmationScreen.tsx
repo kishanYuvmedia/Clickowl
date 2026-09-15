@@ -82,7 +82,7 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
     if (code[idx]) {
       return 'w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold border border-[#E7E7E3] focus:outline-none';
     }
-    return 'w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold bg-[#F7F7F5] border border-transparent focus:border-[#FFD10A] focus:outline-none transition-all';
+    return 'w-10 h-12 sm:w-11 sm:h-12 text-center text-lg font-bold bg-[#F7F7F5] border border-border focus:border-[#FFD10A] focus:outline-none transition-all';
   };
 
   const getCodeInputStyle = (idx: number): React.CSSProperties => {

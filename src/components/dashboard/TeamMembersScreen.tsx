@@ -38,11 +38,11 @@ export const TeamMembersScreen: React.FC = () => {
   );
 
   return (
-    <div className="max-w-[900px] space-y-6">
+    <div className="max-w-[900px] mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-ink">Team Members</h1>
-          <p className="text-sm text-muted mt-1">Manage who has access to your workspace.</p>
+          <p className="text-sm text-muted mt-1.5">Manage who has access to your workspace.</p>
         </div>
         <button
           onClick={() => setShowInvite(!showInvite)}
@@ -54,7 +54,7 @@ export const TeamMembersScreen: React.FC = () => {
       </div>
 
       {showInvite && (
-        <div className="bg-surface border border-border rounded-xl p-5">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <h3 className="text-sm font-bold text-ink mb-3">Invite Team Member</h3>
           <div className="flex items-end gap-3">
             <div className="flex-1">
@@ -64,7 +64,7 @@ export const TeamMembersScreen: React.FC = () => {
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
                 placeholder="colleague@company.com"
-                className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink placeholder:text-muted focus:outline-none focus:border-ink/20"
+                className="input"
               />
             </div>
             <div>
@@ -72,7 +72,7 @@ export const TeamMembersScreen: React.FC = () => {
               <select
                 value={inviteRole}
                 onChange={(e) => setInviteRole(e.target.value)}
-                className="px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20"
+                className="select"
               >
                 <option>Viewer</option>
                 <option>Editor</option>
@@ -98,7 +98,7 @@ export const TeamMembersScreen: React.FC = () => {
               placeholder="Search members..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-8 pr-3 py-1.5 text-xs border border-border rounded-md bg-bg text-ink placeholder:text-muted focus:outline-none focus:border-ink/20 w-48"
+              className="input-search w-48"
             />
           </div>
         </div>

@@ -11,7 +11,7 @@ export const FacebookAdsDetailScreen: React.FC<FacebookAdsDetailProps> = ({
   onConnect,
 }) => {
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <button
         onClick={onBack}
         className="flex items-center gap-1.5 text-xs font-medium text-muted hover:text-ink transition-colors"
@@ -55,17 +55,17 @@ export const FacebookAdsDetailScreen: React.FC<FacebookAdsDetailProps> = ({
         <h2 className="text-sm font-bold text-ink">About this destination</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-bg rounded-xl p-4 border border-border">
+          <div className="bg-bg rounded-xl p-6 border border-border">
             <p className="text-xs text-muted mb-1">Category</p>
             <p className="text-sm font-semibold text-ink">Advertising</p>
           </div>
-          <div className="bg-bg rounded-xl p-4 border border-border">
+          <div className="bg-bg rounded-xl p-6 border border-border">
             <p className="text-xs text-muted mb-1">Required fields</p>
             <p className="text-sm font-semibold text-ink">2 required</p>
           </div>
         </div>
 
-        <div className="bg-bg rounded-xl p-5 border border-border">
+        <div className="bg-bg rounded-xl p-6 border border-border">
           <p className="text-xs text-muted mb-3">What you can do</p>
           <div className="space-y-2.5">
             {[

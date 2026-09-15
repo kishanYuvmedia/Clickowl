@@ -31,7 +31,7 @@ export const UserProfileScreen: React.FC<UserProfileProps> = ({ onBack, onLogout
   };
 
   return (
-    <div className="max-w-full space-y-6">
+    <div className="max-w-[900px] mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-bold text-ink">Profile Settings</h1>
         <button
@@ -84,7 +84,7 @@ export const UserProfileScreen: React.FC<UserProfileProps> = ({ onBack, onLogout
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-border rounded-md bg-bg text-ink focus:outline-none focus:border-ink/20"
+                    className="input pl-9"
                   />
                 </div>
               </div>
@@ -96,7 +96,7 @@ export const UserProfileScreen: React.FC<UserProfileProps> = ({ onBack, onLogout
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-border rounded-md bg-bg text-ink focus:outline-none focus:border-ink/20"
+                    className="input pl-9"
                   />
                 </div>
               </div>
@@ -122,7 +122,7 @@ export const UserProfileScreen: React.FC<UserProfileProps> = ({ onBack, onLogout
                     type="password"
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-border rounded-md bg-bg text-ink focus:outline-none focus:border-ink/20"
+                    className="input pl-9"
                   />
                 </div>
               </div>
@@ -134,7 +134,7 @@ export const UserProfileScreen: React.FC<UserProfileProps> = ({ onBack, onLogout
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-border rounded-md bg-bg text-ink focus:outline-none focus:border-ink/20"
+                    className="input pl-9"
                   />
                 </div>
               </div>
@@ -146,7 +146,7 @@ export const UserProfileScreen: React.FC<UserProfileProps> = ({ onBack, onLogout
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border border-border rounded-md bg-bg text-ink focus:outline-none focus:border-ink/20"
+                    className="input pl-9"
                   />
                 </div>
                 {newPassword && confirmPassword && newPassword !== confirmPassword && (

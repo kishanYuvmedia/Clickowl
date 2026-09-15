@@ -83,19 +83,19 @@ export const PricingModal: React.FC<PricingModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-ink/20 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      <div className="relative bg-white border border-border rounded-2xl shadow-2xl w-full max-w-4xl mx-4 overflow-hidden animate-in">
+      <div className="relative bg-surface border border-border rounded-2xl shadow-xl w-full max-w-4xl mx-4 overflow-hidden animate-in">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-lg hover:bg-bg transition-colors"
         >
           <X className="w-4 h-4 text-muted" />
         </button>
 
         <div className="p-6 pb-4 border-b border-border">
-          <h2 className="text-[17px] font-bold text-ink">Choose Your Plan</h2>
+          <h2 className="text-lg font-bold text-ink">Choose Your Plan</h2>
           <p className="text-[13px] text-muted mt-1">Select the plan that best fits your needs</p>
         </div>
 
@@ -103,10 +103,10 @@ export const PricingModal: React.FC<PricingModalProps> = ({
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative bg-white border rounded-2xl p-5 flex flex-col ${
+              className={`relative bg-surface border rounded-2xl p-5 flex flex-col ${
                 plan.highlighted
                   ? 'border-ink shadow-lg ring-1 ring-ink/10'
-                  : 'border-border hover:border-gray-300 hover:shadow-md'
+                  : 'border-border hover:border-ink/20 hover:shadow-md'
               } transition-all duration-150`}
             >
               {plan.badge && (
@@ -143,7 +143,7 @@ export const PricingModal: React.FC<PricingModalProps> = ({
                 className={`w-full flex items-center justify-center gap-1.5 px-3 py-2.5 text-[13px] font-semibold rounded-xl transition-all duration-150 ${
                   plan.highlighted
                     ? 'bg-ink text-white hover:bg-ink-soft shadow-md'
-                    : 'bg-gray-50 text-ink border border-border hover:bg-gray-100'
+                    : 'bg-bg text-ink border border-border hover:border-ink/20'
                 }`}
               >
                 {plan.price === '$0' ? 'Current Plan' : 'Upgrade'}

@@ -36,7 +36,7 @@ export const ConnectedHubSpotScreen: React.FC<{ onBack: () => void; onDisconnect
   const [showActions, setShowActions] = useState(false);
 
   return (
-    <div className="max-w-full space-y-5">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <div className="flex items-center gap-3">
         <button onClick={onBack} className="text-muted hover:text-ink transition-colors">
           <ArrowLeft className="w-4 h-4" />
@@ -78,24 +78,24 @@ export const ConnectedHubSpotScreen: React.FC<{ onBack: () => void; onDisconnect
       {activeTab === 'overview' && (
         <div className="space-y-5">
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Contacts Synced</p>
               <p className="text-xl font-bold text-ink">{connectionData.contactsSynced.toLocaleString()}</p>
               <div className="flex items-center gap-1 mt-1"><TrendingUp className="w-3 h-3 text-success" /><span className="text-xs text-success font-semibold">+14.3%</span></div>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Deals Synced</p>
               <p className="text-xl font-bold text-ink">{connectionData.dealsSynced.toLocaleString()}</p>
               <div className="flex items-center gap-1 mt-1"><TrendingUp className="w-3 h-3 text-success" /><span className="text-xs text-success font-semibold">+8.7%</span></div>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
               <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Companies</p>
               <p className="text-xl font-bold text-ink">{connectionData.companiesSynced.toLocaleString()}</p>
               <div className="flex items-center gap-1 mt-1"><TrendingDown className="w-3 h-3 text-danger" /><span className="text-xs text-danger font-semibold">-1.2%</span></div>
             </div>
           </div>
 
-          <div className="bg-surface border border-border rounded-xl p-5">
+          <div className="bg-surface border border-border rounded-xl p-6">
             <h3 className="text-sm font-bold text-ink mb-3">Connection Details</h3>
             <div className="grid grid-cols-2 gap-4">
               {[
@@ -126,12 +126,12 @@ export const ConnectedHubSpotScreen: React.FC<{ onBack: () => void; onDisconnect
             <div key={field.label} className="flex items-center justify-between py-3 border-b border-border/50 last:border-0">
               <p className="text-sm font-medium text-ink">{field.label}</p>
               {field.type === 'select' && (
-                <select defaultValue={field.value} className="px-3 py-1.5 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20">
+                <select defaultValue={field.value} className="px-3 py-1.5 text-sm border border-border rounded-lg bg-surface text-ink focus:outline-none focus:border-ink/20">
                   {field.options?.map((opt) => <option key={opt} value={opt}>{opt.charAt(0).toUpperCase() + opt.slice(1)}</option>)}
                 </select>
               )}
               {field.type === 'input' && (
-                <input type="text" defaultValue={field.value} className="px-3 py-1.5 text-sm border border-border rounded-md bg-surface text-ink focus:outline-none focus:border-ink/20 w-64" />
+                <input type="text" defaultValue={field.value} className="px-3 py-1.5 text-sm border border-border rounded-lg bg-surface text-ink focus:outline-none focus:border-ink/20 w-64" />
               )}
               {field.type === 'toggle' && (
                 <button className={`w-9 h-5 rounded-full transition-colors relative ${field.value === 'true' ? 'bg-ink' : 'bg-border'}`}>

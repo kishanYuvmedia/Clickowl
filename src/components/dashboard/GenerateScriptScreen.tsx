@@ -39,7 +39,7 @@ export const GenerateScriptScreen: React.FC<GenerateScriptProps> = ({ onBack, on
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <nav className="flex items-center gap-1.5 text-xs text-muted">
         <button onClick={onBack} className="hover:text-ink transition-colors">Sites</button>
         <ChevronRight className="w-3 h-3" />
@@ -160,7 +160,7 @@ export const GenerateScriptScreen: React.FC<GenerateScriptProps> = ({ onBack, on
             </div>
           </div>
 
-          <div className="bg-surface border border-border rounded-xl p-5 flex items-start gap-4">
+          <div className="bg-surface border border-border rounded-xl p-6 flex items-start gap-4">
             <div className="w-10 h-10 rounded-xl bg-bg border border-border flex items-center justify-center flex-shrink-0">
               <Send className="w-4 h-4 text-muted" />
             </div>
@@ -173,7 +173,7 @@ export const GenerateScriptScreen: React.FC<GenerateScriptProps> = ({ onBack, on
             </button>
           </div>
 
-          <div className="bg-surface border border-border rounded-xl p-5">
+          <div className="bg-surface border border-border rounded-xl p-6">
             <h3 className="text-xs font-bold text-ink mb-1">Tools and Tips</h3>
             <div className="flex items-center justify-between">
               <span className="text-xs text-muted">Technical guides</span>

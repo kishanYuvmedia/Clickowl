@@ -36,11 +36,11 @@ export const ApiKeysScreen: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[900px] space-y-6">
+    <div className="max-w-[900px] mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-ink">API Keys</h1>
-          <p className="text-sm text-muted mt-1">Manage API keys for programmatic access to your data.</p>
+          <p className="text-sm text-muted mt-1.5">Manage API keys for programmatic access to your data.</p>
         </div>
         <button
           onClick={() => setShowCreate(!showCreate)}
@@ -52,7 +52,7 @@ export const ApiKeysScreen: React.FC = () => {
       </div>
 
       {showCreate && (
-        <div className="bg-surface border border-border rounded-xl p-5">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <h3 className="text-sm font-bold text-ink mb-3">Create New API Key</h3>
           <div className="space-y-4">
             <div>
@@ -62,7 +62,7 @@ export const ApiKeysScreen: React.FC = () => {
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
                 placeholder="e.g. Production, Staging"
-                className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink placeholder:text-muted focus:outline-none focus:border-ink/20"
+                className="input"
               />
             </div>
             <div>

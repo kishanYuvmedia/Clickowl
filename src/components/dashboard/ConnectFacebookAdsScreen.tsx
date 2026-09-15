@@ -28,7 +28,7 @@ export const ConnectFacebookAdsScreen: React.FC<ConnectFacebookAdsProps> = ({
   };
 
   const getFieldClassName = (isValid: boolean, touched: boolean) => {
-    const base = 'w-full px-3.5 py-2.5 text-sm border rounded-lg bg-bg text-ink placeholder:text-muted/60 transition-colors';
+    const base = 'input';
     if (touched && !isValid) {
       return `${base} border-danger/40 focus:border-danger focus:ring-1 focus:ring-danger/20`;
     }
@@ -36,7 +36,7 @@ export const ConnectFacebookAdsScreen: React.FC<ConnectFacebookAdsProps> = ({
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-5">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <button
         onClick={onBack}
         className="flex items-center gap-1.5 text-xs font-medium text-muted hover:text-ink transition-colors"
@@ -58,7 +58,7 @@ export const ConnectFacebookAdsScreen: React.FC<ConnectFacebookAdsProps> = ({
           </div>
         </div>
 
-        <div className="bg-bg border border-border rounded-xl p-4 flex items-center justify-between">
+        <div className="bg-bg border border-border rounded-xl p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg border border-border bg-surface flex items-center justify-center">
               <Shield className="w-4 h-4 text-muted" />
@@ -136,7 +136,7 @@ export const ConnectFacebookAdsScreen: React.FC<ConnectFacebookAdsProps> = ({
               onChange={(e) => setTestEventCode({ value: e.target.value, touched: testEventCode.touched })}
               onBlur={() => handleBlur(setTestEventCode)}
               placeholder="TEST12345"
-              className="w-full px-3.5 py-2.5 text-sm border border-border rounded-lg bg-bg text-ink placeholder:text-muted/60 transition-colors focus:border-ink/40 focus:ring-1 focus:ring-ink/10 focus:bg-surface focus:outline-none"
+              className="input"
             />
           </div>
         </div>

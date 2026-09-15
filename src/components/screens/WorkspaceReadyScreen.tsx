@@ -59,7 +59,7 @@ export const WorkspaceReadyScreen: React.FC<WorkspaceReadyScreenProps> = ({
             <input
               type="text"
               placeholder="Search clicks, reports, wisdom..."
-              className="pl-8 pr-3 py-1.5 text-xs rounded-lg bg-white/80 border border-neutral-300 w-64 text-neutral-800 placeholder:text-neutral-500 focus:outline-none"
+              className="input-search pl-9 w-64"
             />
           </div>
           <button className="p-1.5 rounded-lg bg-white/80 border border-neutral-300 text-neutral-700">

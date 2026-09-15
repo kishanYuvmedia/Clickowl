@@ -36,7 +36,7 @@ export const ServerSetupScreen: React.FC<ServerSetupProps> = ({ onBack, onNext }
   };
 
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <nav className="flex items-center gap-1.5 text-xs text-muted">
         <button onClick={onBack} className="hover:text-ink transition-colors">Sites</button>
         <ChevronRight className="w-3 h-3" />
@@ -106,7 +106,7 @@ export const ServerSetupScreen: React.FC<ServerSetupProps> = ({ onBack, onNext }
                 placeholder="track.example.com"
                 value={subdomain}
                 onChange={(e) => setSubdomain(e.target.value)}
-                className="w-full px-3.5 py-2.5 text-sm border border-border rounded-lg bg-bg text-ink placeholder:text-muted/50 focus:outline-none focus:ring-1 focus:ring-ink/20"
+                className="input"
               />
             </div>
 
@@ -184,7 +184,7 @@ export const ServerSetupScreen: React.FC<ServerSetupProps> = ({ onBack, onNext }
             </div>
           )}
 
-          <div className="bg-surface border border-border rounded-xl p-5">
+          <div className="bg-surface border border-border rounded-xl p-6">
             <h3 className="text-xs font-bold text-ink mb-1">Tools and Tips</h3>
             <div className="flex items-center justify-between">
               <span className="text-xs text-muted">Technical guides</span>

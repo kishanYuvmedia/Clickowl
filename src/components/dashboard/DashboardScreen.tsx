@@ -210,18 +210,18 @@ function MiniLineChart() {
 
 export const DashboardScreen: React.FC = () => {
   return (
-    <div className="max-w-[1200px] mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-ink">Dashboard</h1>
-        <p className="text-sm text-muted mt-1">Monitor your data, integrations and analytics in one place.</p>
+        <p className="text-sm text-muted mt-1.5">Monitor your data, integrations and analytics in one place.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {kpiCards.map((card) => {
           const Icon = card.icon;
           return (
-            <div key={card.label} className="bg-surface border border-border rounded-xl p-5">
-              <div className="flex items-center justify-between mb-3">
+            <div key={card.label} className="bg-surface border border-border rounded-xl p-6">
+              <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-semibold text-muted uppercase tracking-wide">{card.label}</span>
                 <Icon className="w-4 h-4 text-brand" />
               </div>
@@ -247,7 +247,7 @@ export const DashboardScreen: React.FC = () => {
           <h2 className="text-sm font-bold text-ink">Event Activity</h2>
           <div className="flex items-center gap-3 text-xs text-muted">
             <span>May 12, 2026 – May 23, 2026</span>
-            <select className="border border-border rounded-md px-2 py-1 text-xs bg-surface text-ink">
+            <select className="px-3 py-1.5 text-xs border border-border rounded-lg bg-surface text-ink focus:outline-none focus:border-ink/20">
               <option>Daily</option>
               <option>Weekly</option>
             </select>

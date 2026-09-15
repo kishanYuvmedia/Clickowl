@@ -18,11 +18,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-bg overflow-hidden">
       <DashboardSidebar activePage={activePage} onNavigate={onNavigate} />
       <div className="flex-1 flex flex-col min-w-0">
         <DashboardTopBar onProfile={onProfile} onLogout={onLogout} />
-        <main className="flex-1 overflow-y-auto p-6 bg-gray-50">{children}</main>
+        <main className="flex-1 overflow-y-auto p-6 lg:p-8 bg-bg">{children}</main>
       </div>
     </div>
   );

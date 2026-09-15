@@ -78,11 +78,11 @@ export const FunnelScreen: React.FC = () => {
   const barWidths = [100, 26.6, 8.5, 3.2];
 
   return (
-    <div className="max-w-full space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-ink">Funnels</h1>
-          <p className="text-sm text-muted mt-1">Track conversion rates across multi-step user journeys.</p>
+          <p className="text-sm text-muted mt-1.5">Track conversion rates across multi-step user journeys.</p>
         </div>
         <button onClick={() => setShowCreate(!showCreate)} className="flex items-center gap-2 px-4 py-2 bg-ink text-white text-sm font-medium rounded-md hover:bg-ink/90 transition-colors">
           <Plus className="w-4 h-4" /> New Funnel
@@ -90,10 +90,10 @@ export const FunnelScreen: React.FC = () => {
       </div>
 
       {showCreate && (
-        <div className="bg-surface border border-border rounded-xl p-5">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <h3 className="text-sm font-bold text-ink mb-3">Create New Funnel</h3>
           <div className="space-y-3">
-            <input type="text" placeholder="Funnel name" className="w-full px-3 py-2 text-sm border border-border rounded-md bg-surface text-ink placeholder:text-muted focus:outline-none focus:border-ink/20" />
+            <input type="text" placeholder="Funnel name" className="input" />
             <div className="flex items-center gap-2 flex-wrap">
               {newSteps.map((step, i) => (
                 <React.Fragment key={step.id}>
@@ -127,7 +127,7 @@ export const FunnelScreen: React.FC = () => {
             <div
               key={funnel.id}
               onClick={() => setSelectedFunnel(funnel)}
-              className={`bg-surface border rounded-xl p-4 cursor-pointer transition-all ${
+              className={`bg-surface border rounded-xl p-6 cursor-pointer transition-all ${
                 selectedFunnel?.id === funnel.id ? 'border-ink/20 shadow-sm' : 'border-border hover:border-ink/10'
               }`}
             >
@@ -152,7 +152,7 @@ export const FunnelScreen: React.FC = () => {
         </div>
 
         {selectedFunnel && (
-          <div className="flex-1 ml-6 space-y-5">
+          <div className="flex-1 ml-6 space-y-6">
             <div className="bg-surface border border-border rounded-xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <div>

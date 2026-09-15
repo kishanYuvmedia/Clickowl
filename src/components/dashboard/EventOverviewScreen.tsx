@@ -418,8 +418,8 @@ export const EventOverviewScreen: React.FC = () => {
 
   const renderOverview = () => (
     <>
-      <div className="grid grid-cols-4 gap-4">
-        <div className="bg-surface border border-border rounded-xl p-4">
+        <div className="grid grid-cols-4 gap-4">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Total Events</p>
           <p className="text-xl font-bold text-ink">104,187</p>
           <div className="flex items-center gap-1 mt-1">
@@ -427,7 +427,7 @@ export const EventOverviewScreen: React.FC = () => {
             <span className="text-xs text-success font-semibold">+14.3%</span>
           </div>
         </div>
-        <div className="bg-surface border border-border rounded-xl p-4">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Unique Users</p>
           <p className="text-xl font-bold text-ink">18,432</p>
           <div className="flex items-center gap-1 mt-1">
@@ -435,7 +435,7 @@ export const EventOverviewScreen: React.FC = () => {
             <span className="text-xs text-danger font-semibold">-2.1%</span>
           </div>
         </div>
-        <div className="bg-surface border border-border rounded-xl p-4">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Avg Processing</p>
           <p className="text-xl font-bold text-ink">42ms</p>
           <div className="flex items-center gap-1 mt-1">
@@ -443,7 +443,7 @@ export const EventOverviewScreen: React.FC = () => {
             <span className="text-xs text-success font-semibold">-8ms</span>
           </div>
         </div>
-        <div className="bg-surface border border-border rounded-xl p-4">
+        <div className="bg-surface border border-border rounded-xl p-6">
           <p className="text-[10px] font-semibold text-muted uppercase tracking-wider mb-1">Delivery Rate</p>
           <p className="text-xl font-bold text-ink">99.2%</p>
           <div className="flex items-center gap-1 mt-1">
@@ -453,7 +453,7 @@ export const EventOverviewScreen: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-surface border border-border rounded-xl p-5">
+      <div className="bg-surface border border-border rounded-xl p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-sm font-bold text-ink">Event Activity</h2>
         </div>
@@ -505,7 +505,7 @@ export const EventOverviewScreen: React.FC = () => {
             <input
               type="text"
               placeholder="Search events..."
-              className="pl-8 pr-3 py-1.5 text-xs border border-border rounded-md bg-bg text-ink placeholder:text-muted focus:outline-none focus:border-ink/20 w-48"
+              className="input-search pl-9 w-48"
             />
           </div>
         </div>
@@ -569,7 +569,7 @@ export const EventOverviewScreen: React.FC = () => {
                 placeholder="Search logs..."
                 value={logSearch}
                 onChange={(e) => setLogSearch(e.target.value)}
-                className="pl-8 pr-3 py-1.5 text-xs border border-border rounded-md bg-bg text-ink placeholder:text-muted focus:outline-none focus:border-ink/20 w-56"
+                className="input-search pl-9 w-56"
               />
             </div>
           </div>
@@ -710,7 +710,7 @@ export const EventOverviewScreen: React.FC = () => {
                 placeholder="Search users..."
                 value={userSearch}
                 onChange={(e) => setUserSearch(e.target.value)}
-                className="pl-8 pr-3 py-1.5 text-xs border border-border rounded-md bg-bg text-ink placeholder:text-muted focus:outline-none focus:border-ink/20 w-56"
+                className="input-search pl-9 w-56"
               />
             </div>
           </div>
@@ -839,7 +839,7 @@ export const EventOverviewScreen: React.FC = () => {
   );
 
   return (
-    <div className="space-y-5">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       {renderTabHeader()}
       {renderChips()}
 

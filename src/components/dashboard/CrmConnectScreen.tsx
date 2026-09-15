@@ -10,7 +10,7 @@ export const CrmConnectScreen: React.FC<CrmConnectScreenProps> = ({ onBack, onSa
   const [account, setAccount] = useState('yourbrand.myshopify.com');
 
   return (
-    <div className="max-w-full mx-auto space-y-6">
+    <div className="max-w-[1280px] mx-auto space-y-6">
       <nav className="flex items-center gap-1.5 text-xs text-muted">
         <button onClick={onBack} className="hover:text-ink transition-colors">CRM Connection</button>
         <ChevronRight className="w-3 h-3" />
@@ -23,7 +23,7 @@ export const CrmConnectScreen: React.FC<CrmConnectScreenProps> = ({ onBack, onSa
         </div>
 
         <div className="p-6 space-y-6">
-          <div className="bg-bg border border-border rounded-xl p-4 flex items-center justify-between">
+          <div className="bg-bg border border-border rounded-xl p-6 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg border border-border bg-surface flex items-center justify-center">
                 <Shield className="w-4 h-4 text-muted" />
@@ -55,7 +55,7 @@ export const CrmConnectScreen: React.FC<CrmConnectScreenProps> = ({ onBack, onSa
               type="text"
               value={account}
               onChange={(e) => setAccount(e.target.value)}
-              className="w-full px-3.5 py-2.5 text-sm border border-border rounded-lg bg-bg text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink/40 focus:ring-1 focus:ring-ink/10 transition-colors"
+              className="input"
             />
           </div>
 
