@@ -18,7 +18,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
-      onNavigate('dashboard');
+      onNavigate('app');
     }, 600);
   };
 
@@ -164,7 +164,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onNavigate }) => {
 
             <button
               type="button"
-              onClick={() => onNavigate('dashboard')}
+              onClick={() => onNavigate('app')}
               id="signin-google-btn"
               className="w-full py-3 px-4 text-sm font-semibold bg-white flex items-center justify-center gap-2 transition-colors"
               style={{

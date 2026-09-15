@@ -1,0 +1,309 @@
+import React, { useState } from 'react';
+import {
+  Plus,
+  Globe,
+  MoreHorizontal,
+  CheckCircle2,
+  XCircle,
+  ArrowUpRight,
+  ChevronDown,
+  BarChart3,
+  Server,
+  Clock,
+  Send,
+  Database,
+  Layers,
+} from 'lucide-react';
+import { PricingModal } from './PricingModal';
+
+interface Site {
+  id: string;
+  name: string;
+  domain: string;
+  status: 'connected' | 'pending' | 'error';
+  lastSync: string;
+  eventsToday: number;
+  scriptInstalled: boolean;
+  accountId: string;
+  serverSideSetup: boolean;
+  destinations: number;
+  sources: number;
+  segments: number;
+  planUsed: number;
+  planTotal: number;
+}
+
+const demoSites: Site[] = [
+  {
+    id: '1',
+    name: 'Example2.com',
+    domain: 'example2.com',
+    status: 'connected',
+    lastSync: '2 min ago',
+    eventsToday: 8420,
+    scriptInstalled: true,
+    accountId: 'ACC-10482',
+    serverSideSetup: false,
+    destinations: 1,
+    sources: 2,
+    segments: 2,
+    planUsed: 8420,
+    planTotal: 10000,
+  },
+];
+
+interface SiteConnectionListProps {
+  onAddDomain: () => void;
+  onSelectSite: (site: Site) => void;
+}
+
+export const SiteConnectionListScreen: React.FC<SiteConnectionListProps> = ({
+  onAddDomain,
+  onSelectSite,
+}) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showPricingModal, setShowPricingModal] = useState(false);
+
+  const site = demoSites[0];
+  const hasSite = demoSites.length > 0;
+
+  const usagePercent = site ? Math.round((site.planUsed / site.planTotal) * 100) : 0;
+
+  return (
+    <div className="flex gap-6 min-h-[calc(100vh-8rem)]">
+      {/* Left Panel — Plan & Checklist */}
+      <aside className="hidden lg:flex flex-col w-[240px] shrink-0 gap-5">
+        {/* Plan Card */}
+        <div className="bg-white border border-border rounded-2xl p-5 shadow-sm">
+          <div className="mb-4">
+            <p className="text-[11px] font-semibold text-muted uppercase tracking-wider">Free Plan</p>
+            <p className="text-[13px] text-ink mt-1">Current Plan</p>
+          </div>
+          <div className="mb-4">
+            <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Events used</p>
+            <p className="text-[15px] font-bold text-ink">
+              {site ? site.planUsed.toLocaleString() : '0'} / {site ? site.planTotal.toLocaleString() : '10K'}
+            </p>
+          </div>
+          {/* Progress bar */}
+          <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
+            <div
+              className="h-full bg-ink rounded-full transition-all duration-300"
+              style={{ width: `${usagePercent}%` }}
+            />
+          </div>
+          <button
+            onClick={() => setShowPricingModal(true)}
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-[13px] font-semibold text-ink bg-gray-50 border border-border rounded-xl hover:bg-gray-100 transition-colors"
+          >
+            Upgrade
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Setup Checklist */}
+        <div className="bg-white border border-border rounded-2xl p-5 shadow-sm">
+          <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-4">Setup Checklist</p>
+          <div className="border-t border-border mb-4" />
+
+          {hasSite && (
+            <div className="space-y-0">
+              {/* Website name */}
+              <div className="flex items-center gap-2.5 mb-4">
+                <Globe className="w-4 h-4 text-muted" />
+                <span className="text-[13px] font-semibold text-ink truncate">{site.name}</span>
+                <ChevronDown className="w-4 h-4 text-muted ml-auto" />
+              </div>
+
+              {/* Checklist items */}
+              <div className="ml-[7px] pl-4 border-l-2 border-gray-100 space-y-0">
+                {/* Item 1: Website Connected */}
+                <div className="relative flex items-center gap-3 py-2">
+                  <div className="absolute -left-[23px] w-[16px] h-[16px] rounded-full bg-success flex items-center justify-center shadow-sm">
+                    <CheckCircle2 className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="text-[13px] text-ink">Website Connected</span>
+                </div>
+
+                {/* Item 2: Server-side Setup */}
+                <div className="relative flex items-center gap-3 py-2">
+                  <div className={`absolute -left-[23px] w-[16px] h-[16px] rounded-full flex items-center justify-center shadow-sm ${
+                    site.serverSideSetup ? 'bg-success' : 'bg-danger'
+                  }`}>
+                    {site.serverSideSetup ? (
+                      <CheckCircle2 className="w-3 h-3 text-white" />
+                    ) : (
+                      <XCircle className="w-3 h-3 text-white" />
+                    )}
+                  </div>
+                  <span className={`text-[13px] ${site.serverSideSetup ? 'text-ink' : 'text-danger'}`}>
+                    Server-side Setup
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </aside>
+
+      {/* Right Panel — Main Content */}
+      <div className="flex-1 min-w-0 space-y-5">
+        {/* Connection Banner */}
+        <div className="bg-white border border-border rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+          <p className="text-[13px] text-muted max-w-md leading-relaxed">
+            Connect a website to start collecting analytics, monitor events, and manage tracking settings.
+          </p>
+          <button
+            onClick={onAddDomain}
+            className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-semibold text-white bg-ink rounded-xl hover:bg-ink-soft transition-colors shadow-md shrink-0"
+          >
+            Add Website
+            <Plus className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-border" />
+
+        {/* Website Connection Card */}
+        {hasSite ? (
+          <div
+            onClick={() => onSelectSite(site)}
+            className="bg-white border border-border rounded-2xl hover:border-gray-300 hover:shadow-md transition-all duration-150 cursor-pointer shadow-sm"
+          >
+            {/* Card Header */}
+            <div className="flex items-center justify-between p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-border flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-muted" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-[15px] font-bold text-ink">{site.name}</h2>
+                    <span className="text-[12px] text-muted bg-gray-50 px-2 py-0.5 rounded-md">{site.accountId}</span>
+                  </div>
+                  <div className="flex items-center gap-2 mt-1.5">
+                    <span className="w-2 h-2 rounded-full bg-success" />
+                    <span className="text-[13px] text-success font-medium capitalize">{site.status}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMenuOpen(!menuOpen);
+                  }}
+                  className="p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <MoreHorizontal className="w-5 h-5 text-muted" />
+                </button>
+                {menuOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-44 bg-white border border-border rounded-xl shadow-xl z-10 py-1.5 animate-in">
+                    <button className="w-full text-left px-4 py-2.5 text-[13px] text-ink hover:bg-gray-50 transition-colors">
+                      View Details
+                    </button>
+                    <button className="w-full text-left px-4 py-2.5 text-[13px] text-ink hover:bg-gray-50 transition-colors">
+                      Settings
+                    </button>
+                    <button className="w-full text-left px-4 py-2.5 text-[13px] text-danger hover:bg-red-50 transition-colors">
+                      Disconnect
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Metrics Grid */}
+            <div className="border-t border-border">
+              {/* Row 1 */}
+              <div className="grid grid-cols-3 divide-x divide-border">
+                {/* Events */}
+                <div className="p-6">
+                  <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Events</p>
+                  <p className="text-[17px] font-bold text-ink">
+                    {site.eventsToday.toLocaleString()}{' '}
+                    <span className="text-[13px] font-normal text-muted">/ {site.planTotal.toLocaleString()}</span>
+                  </p>
+                  <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden mt-3">
+                    <div
+                      className="h-full bg-ink rounded-full transition-all duration-300"
+                      style={{ width: `${usagePercent}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Server-Side Setup */}
+                <div className="p-6">
+                  <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Server-Side Setup</p>
+                  <div className="flex items-center gap-2">
+                    {site.serverSideSetup ? (
+                      <>
+                        <span className="w-2 h-2 rounded-full bg-success" />
+                        <span className="text-[15px] font-bold text-ink">Set up</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="w-2 h-2 rounded-full bg-danger" />
+                        <span className="text-[15px] font-bold text-danger">Not set up</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Last Ping */}
+                <div className="p-6">
+                  <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Last Ping</p>
+                  <p className="text-[15px] font-bold text-ink">{site.lastSync}</p>
+                </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="grid grid-cols-3 divide-x divide-border border-t border-border">
+                {/* Destinations */}
+                <div className="p-6">
+                  <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Destination</p>
+                  <p className="text-[15px] font-bold text-ink">{site.destinations}/5</p>
+                </div>
+
+                {/* Sources */}
+                <div className="p-6">
+                  <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Sources</p>
+                  <p className="text-[15px] font-bold text-ink">{site.sources}/5</p>
+                </div>
+
+                {/* Segments */}
+                <div className="p-6">
+                  <p className="text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">Segments</p>
+                  <p className="text-[15px] font-bold text-ink">{site.segments}/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Empty State */
+          <div className="bg-white border border-border rounded-2xl p-16 shadow-sm">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-border flex items-center justify-center mb-4">
+                <Globe className="w-7 h-7 text-muted" />
+              </div>
+              <p className="text-[15px] text-muted">No websites connected yet.</p>
+              <button
+                onClick={onAddDomain}
+                className="mt-4 text-[13px] text-ink font-semibold hover:underline"
+              >
+                Add your first website
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <PricingModal
+        isOpen={showPricingModal}
+        onClose={() => setShowPricingModal(false)}
+        onSelectPlan={(plan) => console.log('Selected plan:', plan)}
+      />
+    </div>
+  );
+};

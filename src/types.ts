@@ -1,4 +1,4 @@
-export type ScreenMode = 'signin' | 'signup' | 'verify' | 'dashboard';
+export type ScreenMode = 'signin' | 'signup' | 'verify' | 'dashboard' | 'app';
 
 export interface ClickInsight {
   id: string;

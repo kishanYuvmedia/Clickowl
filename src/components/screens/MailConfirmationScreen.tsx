@@ -56,7 +56,7 @@ export const MailConfirmationScreen: React.FC<MailConfirmationScreenProps> = ({
     } else if (entered.length === 6) {
       setIsVerified(true);
       setTimeout(() => {
-        onNavigate('dashboard');
+        onNavigate('app');
       }, 700);
     } else {
       setIsInvalid(true);

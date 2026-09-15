@@ -1,57 +1,332 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { ScreenMode } from './types';
 import { AuthLayout } from './components/screens/AuthLayout';
 import { SignInScreen } from './components/screens/SignInScreen';
 import { SignUpScreen } from './components/screens/SignUpScreen';
 import { MailConfirmationScreen } from './components/screens/MailConfirmationScreen';
 import { WorkspaceReadyScreen } from './components/screens/WorkspaceReadyScreen';
-import { Layers } from 'lucide-react';
+import { DashboardLayout } from './components/dashboard/DashboardLayout';
+import { DashboardScreen } from './components/dashboard/DashboardScreen';
+import { DestinationsScreen } from './components/dashboard/DestinationsScreen';
+import { FacebookAdsDetailScreen } from './components/dashboard/FacebookAdsDetailScreen';
+import { ConnectFacebookAdsScreen } from './components/dashboard/ConnectFacebookAdsScreen';
+import { ConnectedFacebookAdsScreen } from './components/dashboard/ConnectedFacebookAdsScreen';
+import { GoogleAdsDetailScreen } from './components/dashboard/GoogleAdsDetailScreen';
+import { EventOverviewScreen } from './components/dashboard/EventOverviewScreen';
+import { FunnelScreen } from './components/dashboard/FunnelScreen';
+import { RetentionScreen } from './components/dashboard/RetentionScreen';
+import { CrmConnectScreen } from './components/dashboard/CrmConnectScreen';
+import { CrmConfigurationScreen } from './components/dashboard/CrmConfigurationScreen';
+import { CrmEventLogsScreen } from './components/dashboard/CrmEventLogsScreen';
+import { ManageWebhookScreen } from './components/dashboard/ManageWebhookScreen';
+import { HubSpotConnectScreen } from './components/dashboard/HubSpotConnectScreen';
+import { ConnectedHubSpotScreen } from './components/dashboard/ConnectedHubSpotScreen';
+import { AddDomainScreen } from './components/dashboard/AddDomainScreen';
+import { GenerateScriptScreen } from './components/dashboard/GenerateScriptScreen';
+import { ServerSetupScreen } from './components/dashboard/ServerSetupScreen';
+import { SiteConnectionListScreen } from './components/dashboard/SiteConnectionListScreen';
+import { DomainDetailScreen } from './components/dashboard/DomainDetailScreen';
+import { SiteSettingsScreen } from './components/dashboard/SiteSettingsScreen';
+import { SettingsScreen } from './components/dashboard/SettingsScreen';
+import { TeamMembersScreen } from './components/dashboard/TeamMembersScreen';
+import { ApiKeysScreen } from './components/dashboard/ApiKeysScreen';
+import { UserProfileScreen } from './components/dashboard/UserProfileScreen';
+import { ConfirmationModal } from './components/dashboard/ConfirmationModal';
+import { SuccessToast } from './components/dashboard/SuccessToast';
+import { DashboardPage } from './components/dashboard/DashboardSidebar';
 
-export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<ScreenMode>('signin');
+interface ToastState {
+  message: string;
+  visible: boolean;
+}
 
-  const handleNavigate = (screen: ScreenMode) => {
-    setCurrentScreen(screen);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const defaultSite = {
+  id: '1',
+  name: 'Example2.com',
+  domain: 'example2.com',
+  status: 'connected',
+  lastSync: '2 min ago',
+  eventsToday: 12847,
+};
+
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showDisconnectModal, setShowDisconnectModal] = useState(false);
+  const [toast, setToast] = useState<ToastState>({ message: '', visible: false });
+  const [disconnectTarget, setDisconnectTarget] = useState<string>('');
+
+  const showToast = useCallback((message: string) => {
+    setToast({ message, visible: true });
+  }, []);
+
+  const hideToast = useCallback(() => {
+    setToast((prev) => ({ ...prev, visible: false }));
+  }, []);
+
+  const handleDisconnect = (target: string) => {
+    setDisconnectTarget(target);
+    setShowDisconnectModal(true);
+  };
+
+  const confirmDisconnect = () => {
+    showToast('Disconnected successfully');
+    setShowDisconnectModal(false);
+    if (disconnectTarget === 'crm') navigate('/connections/crm');
+    if (disconnectTarget === 'destinations') navigate('/destinations');
+    if (disconnectTarget === 'site') navigate('/connections');
+    if (disconnectTarget === 'google-ads') navigate('/destinations');
+    if (disconnectTarget === 'hubspot') navigate('/connections/crm');
+  };
+
+  const getActivePage = (): DashboardPage => {
+    const path = location.pathname;
+    if (path.startsWith('/settings/team')) return 'team-members';
+    if (path.startsWith('/settings/api-keys')) return 'api-keys';
+    if (path.startsWith('/settings')) return 'settings';
+    if (path.startsWith('/analytics/funnels')) return 'funnels';
+    if (path.startsWith('/analytics/retention')) return 'retention';
+    if (path.startsWith('/analytics')) return 'analytics';
+    if (path.startsWith('/dashboard')) return 'dashboard';
+    if (path.startsWith('/connections/crm')) return 'crm-connection';
+    if (path.startsWith('/connections')) return 'sites';
+    if (path.startsWith('/destinations')) return 'destinations';
+    return 'dashboard';
+  };
+
+  const dashboardProps = {
+    onNavigate: (p: DashboardPage) => navigate(getRoutePath(p)),
+    onProfile: () => navigate('/profile'),
+    onLogout: () => navigate('/signin'),
   };
 
   return (
-    <div
-      className="min-h-screen font-['Plus_Jakarta_Sans'] transition-colors duration-300 bg-white text-slate-900"
-      id="clickowl-app-root"
-    >
+    <div className="min-h-screen font-['Inter',sans-serif] transition-colors duration-150 bg-gray-50 text-ink" id="clickowl-app-root">
       <main>
-        {currentScreen === 'signin' && (
-          <AuthLayout
-            currentScreen={currentScreen}
-            onNavigate={handleNavigate}
-          >
-            <SignInScreen onNavigate={handleNavigate} />
-          </AuthLayout>
-        )}
+        <Routes>
+          <Route path="/signin" element={<AuthLayout currentScreen="signin" onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)}><SignInScreen onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)} /></AuthLayout>} />
+          <Route path="/signup" element={<AuthLayout currentScreen="signup" onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)}><SignUpScreen onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)} /></AuthLayout>} />
+          <Route path="/verify" element={<AuthLayout currentScreen="verify" onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)}><MailConfirmationScreen onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)} /></AuthLayout>} />
+          <Route path="/dashboard" element={<WorkspaceReadyScreen onNavigate={(s) => navigate(s === 'dashboard' ? '/app' : `/${s}`)} />} />
 
-        {currentScreen === 'signup' && (
-          <AuthLayout
-            currentScreen={currentScreen}
-            onNavigate={handleNavigate}
-          >
-            <SignUpScreen onNavigate={handleNavigate} />
-          </AuthLayout>
-        )}
+          <Route path="/app" element={<Navigate to="/dashboard-page" replace />} />
 
-        {currentScreen === 'verify' && (
-          <AuthLayout
-            currentScreen={currentScreen}
-            onNavigate={handleNavigate}
-          >
-            <MailConfirmationScreen onNavigate={handleNavigate} />
-          </AuthLayout>
-        )}
+          {/* Dashboard */}
+          <Route path="/dashboard-page" element={
+            <DashboardLayout activePage="dashboard" {...dashboardProps}>
+              <DashboardScreen />
+            </DashboardLayout>
+          } />
 
-        {currentScreen === 'dashboard' && (
-          <WorkspaceReadyScreen onNavigate={handleNavigate} />
-        )}
+          {/* Connections - Sites */}
+          <Route path="/connections" element={
+            <DashboardLayout activePage="sites" {...dashboardProps}>
+              <SiteConnectionListScreen
+                onAddDomain={() => navigate('/connections/add-domain')}
+                onSelectSite={(site) => navigate('/connections/site/' + site.id)}
+              />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/add-domain" element={
+            <DashboardLayout activePage="sites" {...dashboardProps}>
+              <AddDomainScreen onBack={() => navigate('/connections')} onNext={() => navigate('/connections/server-setup')} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/server-setup" element={
+            <DashboardLayout activePage="sites" {...dashboardProps}>
+              <ServerSetupScreen onBack={() => navigate('/connections/add-domain')} onNext={() => navigate('/connections/generate-script')} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/generate-script" element={
+            <DashboardLayout activePage="sites" {...dashboardProps}>
+              <GenerateScriptScreen onBack={() => navigate('/connections/server-setup')} onNext={() => { showToast('Website setup completed'); navigate('/connections'); }} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/site/:id" element={
+            <DashboardLayout activePage="sites" {...dashboardProps}>
+              <DomainDetailScreenWrapper onDisconnect={() => handleDisconnect('site')} onBack={() => navigate('/connections')} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/site/:id/settings" element={
+            <DashboardLayout activePage="sites" {...dashboardProps}>
+              <SiteSettingsScreen onBack={() => navigate('/connections')} onDisconnect={() => handleDisconnect('site')} />
+            </DashboardLayout>
+          } />
+
+          {/* Connections - CRM */}
+          <Route path="/connections/crm" element={
+            <DashboardLayout activePage="crm-connection" {...dashboardProps}>
+              <CrmConfigurationScreen
+                onBack={() => navigate('/connections')}
+                onManageWebhook={() => navigate('/connections/crm/webhook')}
+                onViewLogs={() => navigate('/connections/crm/logs')}
+                onDisconnect={() => handleDisconnect('crm')}
+              />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/crm/connect" element={
+            <DashboardLayout activePage="crm-connection" {...dashboardProps}>
+              <CrmConnectScreen onBack={() => navigate('/connections/crm')} onSave={() => { showToast('CRM connected successfully'); navigate('/connections/crm'); }} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/crm/webhook" element={
+            <DashboardLayout activePage="crm-connection" {...dashboardProps}>
+              <ManageWebhookScreen onBack={() => navigate('/connections/crm')} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/crm/logs" element={
+            <DashboardLayout activePage="crm-connection" {...dashboardProps}>
+              <CrmEventLogsScreen onBack={() => navigate('/connections/crm')} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/crm/hubspot" element={
+            <DashboardLayout activePage="crm-connection" {...dashboardProps}>
+              <HubSpotConnectScreen onBack={() => navigate('/connections/crm')} onSave={() => { showToast('HubSpot connected successfully'); navigate('/connections/crm/hubspot/connected'); }} />
+            </DashboardLayout>
+          } />
+          <Route path="/connections/crm/hubspot/connected" element={
+            <DashboardLayout activePage="crm-connection" {...dashboardProps}>
+              <ConnectedHubSpotScreen onBack={() => navigate('/connections/crm')} onDisconnect={() => handleDisconnect('hubspot')} />
+            </DashboardLayout>
+          } />
+
+          {/* Analytics */}
+          <Route path="/analytics" element={
+            <DashboardLayout activePage="analytics" {...dashboardProps}>
+              <EventOverviewScreen />
+            </DashboardLayout>
+          } />
+          <Route path="/analytics/logs" element={
+            <DashboardLayout activePage="analytics" {...dashboardProps}>
+              <EventOverviewScreen />
+            </DashboardLayout>
+          } />
+          <Route path="/analytics/users" element={
+            <DashboardLayout activePage="analytics" {...dashboardProps}>
+              <EventOverviewScreen />
+            </DashboardLayout>
+          } />
+          <Route path="/analytics/funnels" element={
+            <DashboardLayout activePage="funnels" {...dashboardProps}>
+              <FunnelScreen />
+            </DashboardLayout>
+          } />
+          <Route path="/analytics/retention" element={
+            <DashboardLayout activePage="retention" {...dashboardProps}>
+              <RetentionScreen />
+            </DashboardLayout>
+          } />
+
+          {/* Destinations */}
+          <Route path="/destinations" element={
+            <DashboardLayout activePage="destinations" {...dashboardProps}>
+              <DestinationsScreen
+                onSelectDestination={(name) => {
+                  if (name === 'Facebook Ads') navigate('/destinations/facebook-ads');
+                  if (name === 'Google Ads') navigate('/destinations/google-ads');
+                  if (name === 'HubSpot') navigate('/connections/crm/hubspot');
+                }}
+              />
+            </DashboardLayout>
+          } />
+          <Route path="/destinations/facebook-ads" element={
+            <DashboardLayout activePage="destinations" {...dashboardProps}>
+              <FacebookAdsDetailScreen onBack={() => navigate('/destinations')} onConnect={() => navigate('/destinations/facebook-ads/connect')} />
+            </DashboardLayout>
+          } />
+          <Route path="/destinations/facebook-ads/connect" element={
+            <DashboardLayout activePage="destinations" {...dashboardProps}>
+              <ConnectFacebookAdsScreen onBack={() => navigate('/destinations/facebook-ads')} onSave={() => { showToast('Facebook Ads connected'); navigate('/destinations/facebook-ads/connected'); }} />
+            </DashboardLayout>
+          } />
+          <Route path="/destinations/facebook-ads/connected" element={
+            <DashboardLayout activePage="destinations" {...dashboardProps}>
+              <ConnectedFacebookAdsScreen onBack={() => navigate('/destinations')} onDisconnect={() => handleDisconnect('destinations')} />
+            </DashboardLayout>
+          } />
+          <Route path="/destinations/google-ads" element={
+            <DashboardLayout activePage="destinations" {...dashboardProps}>
+              <GoogleAdsDetailScreen onBack={() => navigate('/destinations')} onDisconnect={() => handleDisconnect('google-ads')} />
+            </DashboardLayout>
+          } />
+
+          {/* Settings */}
+          <Route path="/settings" element={
+            <DashboardLayout activePage="settings" {...dashboardProps}>
+              <SettingsScreen />
+            </DashboardLayout>
+          } />
+          <Route path="/settings/team" element={
+            <DashboardLayout activePage="team-members" {...dashboardProps}>
+              <TeamMembersScreen />
+            </DashboardLayout>
+          } />
+          <Route path="/settings/api-keys" element={
+            <DashboardLayout activePage="api-keys" {...dashboardProps}>
+              <ApiKeysScreen />
+            </DashboardLayout>
+          } />
+
+          {/* Profile */}
+          <Route path="/profile" element={
+            <DashboardLayout activePage="dashboard" {...dashboardProps}>
+              <UserProfileScreen onBack={() => navigate('/dashboard-page')} onLogout={() => navigate('/signin')} />
+            </DashboardLayout>
+          } />
+
+          <Route path="/" element={<Navigate to="/signin" replace />} />
+          <Route path="*" element={<Navigate to="/signin" replace />} />
+        </Routes>
       </main>
+
+      <ConfirmationModal
+        isOpen={showDisconnectModal}
+        onClose={() => setShowDisconnectModal(false)}
+        onConfirm={confirmDisconnect}
+        title="Disconnect Integration"
+        message="Are you sure you want to disconnect? This will stop sending data and you may lose existing configuration."
+        confirmText="Disconnect"
+        cancelText="Cancel"
+        variant="danger"
+      />
+
+      <SuccessToast message={toast.message} isVisible={toast.visible} onClose={hideToast} />
     </div>
+  );
+}
+
+function getRoutePath(page: DashboardPage): string {
+  switch (page) {
+    case 'dashboard': return '/dashboard-page';
+    case 'sites': return '/connections';
+    case 'crm-connection': return '/connections/crm';
+    case 'analytics': return '/analytics';
+    case 'funnels': return '/analytics/funnels';
+    case 'retention': return '/analytics/retention';
+    case 'destinations': return '/destinations';
+    case 'settings': return '/settings';
+    case 'team-members': return '/settings/team';
+    case 'api-keys': return '/settings/api-keys';
+    default: return '/dashboard-page';
+  }
+}
+
+function DomainDetailScreenWrapper({ onDisconnect, onBack }: { onDisconnect: () => void; onBack: () => void }) {
+  const { id } = useParams();
+  return (
+    <DomainDetailScreen
+      domain={defaultSite}
+      onBack={onBack}
+      onDisconnect={onDisconnect}
+    />
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
