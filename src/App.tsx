@@ -114,8 +114,8 @@ function AppContent() {
 
           {/* Dashboard */}
           <Route path="/dashboard-page" element={
-            <DashboardLayout activePage="dashboard" {...dashboardProps}>
-              <DashboardScreen />
+            <DashboardLayout activePage="analytics" {...dashboardProps}>
+              <EventOverviewScreen />
             </DashboardLayout>
           } />
 

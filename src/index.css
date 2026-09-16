@@ -45,6 +45,16 @@
   --card-padding: 24px;
   --sidebar-width: 240px;
   --topbar-height: 64px;
+  /* Dark dashboard tokens */
+  --color-dark-bg: #050505;
+  --color-dark-surface: #080808;
+  --color-dark-card: #F4F4F4;
+  --color-dark-card-alt: #EDEDED;
+  --color-dark-border: #D5D5D5;
+  --color-dark-text: #111111;
+  --color-dark-muted: #6B7280;
+  --color-positive: #16803C;
+  --color-negative: #D97706;
 }
 
 * {
@@ -315,4 +325,44 @@ p {
 
 .animate-in {
   animation: scaleIn 150ms ease-out forwards;
+}
+
+/* Event Analytics Dashboard Dark Theme */
+.dark-dashboard {
+  background-color: #000000;
+  color: #D1D5DB;
+}
+
+.dark-dashboard .sidebar {
+  background-color: #F5F5F5;
+  border-right: 1px solid #E5E5E5;
+}
+
+.dark-dashboard .sidebar-item {
+  color: #6B7280;
+}
+
+.dark-dashboard .sidebar-item.active {
+  background-color: white;
+  color: #111111;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.dark-dashboard .card {
+  background-color: #F4F4F4;
+  border-radius: 8px;
+}
+
+.dark-dashboard .table-header {
+  color: #6B7280;
+}
+
+.dark-dashboard .table-row:hover {
+  background-color: #EDEDED;
+}
+
+.dark-dashboard .badge-source {
+  background-color: #E5E7EB;
+  border: 1px solid #D1D5DB;
+  color: #6B7280;
 }
